@@ -21,25 +21,22 @@ collections:
             name: hero
             widget: object
             fields:
-              - { label: Headline (italic line), name: headline, widget: string, default: "told beautifully." }
-              - { label: Description, name: description, widget: text, default: "ELB Creative is a full-service creative studio offering copywriting, content strategy, social media, photography, web design, and more." }
-              - { label: Location 1, name: location1, widget: string, default: "Ontario, Canada" }
-              - { label: Location 2, name: location2, widget: string, default: "Atlanta, Georgia" }
-
+              - { label: Headline, name: headline, widget: string }
+              - { label: Description, name: description, widget: text }
+              - { label: Location 1, name: location1, widget: string }
+              - { label: Location 2, name: location2, widget: string }
           - label: About Section
             name: about
             widget: object
             fields:
-              - { label: About Text, name: text, widget: text, default: "I'm Anna — a writer, content strategist, and creative professional with a background in English literature, lifestyle media, and real estate marketing." }
-              - { label: Pull Quote, name: quote, widget: string, default: "Great creative work doesn't just look good — it makes people feel something." }
-
+              - { label: About Text, name: text, widget: text }
+              - { label: Pull Quote, name: quote, widget: string }
           - label: Contact Info
             name: contact
             widget: object
             fields:
-              - { label: Inquiry Email, name: email, widget: string, default: "hello@elbcreative.co" }
-              - { label: Instagram Handle, name: instagram, widget: string, default: "@rayyanelbaf" }
-
+              - { label: Inquiry Email, name: email, widget: string }
+              - { label: Instagram Handle, name: instagram, widget: string }
           - label: Packages
             name: packages
             widget: object
@@ -48,26 +45,17 @@ collections:
                 name: starter
                 widget: object
                 fields:
-                  - { label: Price (e.g. $300), name: price, widget: string, default: "$300" }
-                  - label: Features
-                    name: features
-                    widget: list
-                    field: { label: Feature, name: item, widget: string }
+                  - { label: Price, name: price, widget: string }
+                  - { label: Features, name: features, widget: list, field: { label: Feature, name: item, widget: string } }
               - label: Growth Package
                 name: growth
                 widget: object
                 fields:
-                  - { label: Price (e.g. $500), name: price, widget: string, default: "$500" }
-                  - label: Features
-                    name: features
-                    widget: list
-                    field: { label: Feature, name: item, widget: string }
+                  - { label: Price, name: price, widget: string }
+                  - { label: Features, name: features, widget: list, field: { label: Feature, name: item, widget: string } }
               - label: Full Service Package
                 name: full
                 widget: object
                 fields:
-                  - { label: Price (e.g. $700), name: price, widget: string, default: "$700" }
-                  - label: Features
-                    name: features
-                    widget: list
-                    field: { label: Feature, name: item, widget: string }
+                  - { label: Price, name: price, widget: string }
+                  - { label: Features, name: features, widget: list, field: { label: Feature, name: item, widget: string } }

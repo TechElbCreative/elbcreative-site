@@ -6,7 +6,7 @@
     "location2": "Atlanta, Georgia"
   },
   "about": {
-    "text": "I'm Anna — a writer, content strategist, and creative professional with a background in English literature, lifestyle media, and real estate marketing. I started ELB Creative to offer brands a single trusted studio for all their creative needs — from copy to photography to web design and beyond.",
+    "text": "I'm Anna — a writer, content strategist, and creative professional with a background in English literature, lifestyle media, and real estate marketing. I started ELB Creative to offer brands a single trusted studio for all their creative needs.",
     "quote": "Great creative work doesn't just look good — it makes people feel something."
   },
   "contact": {
@@ -14,17 +14,8 @@
     "instagram": "@rayyanelbaf"
   },
   "packages": {
-    "starter": {
-      "price": "$300",
-      "features": ["Choose 1–2 services", "4 deliverables per month", "2 rounds of revisions", "Monthly check-in call", "Email support"]
-    },
-    "growth": {
-      "price": "$500",
-      "features": ["Choose 2–3 services", "8–10 deliverables per month", "Unlimited revisions", "Bi-weekly strategy calls", "Priority email support", "Monthly performance recap"]
-    },
-    "full": {
-      "price": "$700",
-      "features": ["Full studio access", "All services available", "Unlimited deliverables", "Weekly strategy calls", "Priority turnaround", "Dedicated support"]
-    }
+    "starter": { "price": "$300", "features": ["Choose 1–2 services", "4 deliverables per month", "2 rounds of revisions", "Monthly check-in call", "Email support"] },
+    "growth": { "price": "$500", "features": ["Choose 2–3 services", "8–10 deliverables per month", "Unlimited revisions", "Bi-weekly strategy calls", "Priority email support", "Monthly performance recap"] },
+    "full": { "price": "$700", "features": ["Full studio access", "All services available", "Unlimited deliverables", "Weekly strategy calls", "Priority turnaround", "Dedicated support"] }
   }
 }

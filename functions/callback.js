@@ -1,0 +1,19 @@
+export async function onRequest(context) {
+  const { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } = context.env;
+  const url = new URL(context.request.url);
+  const code = url.searchParams.get('code');
+
+  if (!code) return new Response('Missing code', { status: 400 });
+
+  const tokenRes = await fetch('https://github.com/login/oauth/access_token', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify({ client_id: GITHUB_CLIENT_ID, client_secret: GITHUB_CLIENT_SECRET, code })
+  });
+
+  const { access_token, error } = await tokenRes.json();
+  if (error || !access_token) return new Response('Auth error: ' + error, { status: 400 });
+
+  const html = '<!DOCTYPE html><html><body><script>window.opener.postMessage('authorization:github:success:' + JSON.stringify({ token: '' + access_token + '', provider: 'github' }), '*'); window.close();</script></body></html>';
+  return new Response(html, { headers: { 'Content-Type': 'text/html' } });
+}

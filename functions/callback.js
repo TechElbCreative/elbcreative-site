@@ -14,6 +14,11 @@ export async function onRequest(context) {
   const { access_token, error } = await tokenRes.json();
   if (error || !access_token) return new Response('Auth error: ' + error, { status: 400 });
 
-  const html = '<!DOCTYPE html><html><body><script>window.opener.postMessage('authorization:github:success:' + JSON.stringify({ token: '' + access_token + '', provider: 'github' }), '*'); window.close();</script></body></html>';
+  const msg = JSON.stringify({ token: access_token, provider: 'github' });
+  const html = `<!DOCTYPE html><html><body><script>
+    window.opener.postMessage(\`authorization:github:success:\${msg}\`, '*');
+    window.close();
+  <\/script></body></html>`;
+
   return new Response(html, { headers: { 'Content-Type': 'text/html' } });
 }

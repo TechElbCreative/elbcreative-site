@@ -5,28 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ELB Creative — Admin</title>
   <script>window.CMS_MANUAL_INIT = true;</script>
-</head>
-<body>
-<script src="https://unpkg.com/decap-cms@2.10.192/dist/decap-cms.js"></script>
-<script>
-window.addEventListener('load', function() {
-  CMS.init({
-    config: {
-      backend: {
-        name: 'github',
-        repo: 'TechElbCreative/elbcreative-site',
-        branch: 'main',
-        base_url: 'https://elbcreative.co',
-        auth_endpoint: '/auth'
-      },
-      media_folder: 'images',
-      public_folder: '/images',
-      collections: [
-        {
-          name: 'content',
-          label: 'Site Content',
-          files: [
-            {
+  <script src="https://unpkg.com/decap-cms@2.10.192/dist/decap-cms.js" onload="initCMS()"></script>
+  <script>
+  function initCMS() {
+    CMS.init({
+      config: {
+        backend: {
+          name: 'github',
+          repo: 'TechElbCreative/elbcreative-site',
+          branch: 'main',
+          base_url: 'https://elbcreative.co',
+          auth_endpoint: '/auth'
+        },
+        media_folder: 'images',
+        public_folder: '/images',
+        collections: [
+          {
+            name: 'content',
+            label: 'Site Content',
+            files: [{
               name: 'main_content',
               label: 'Main Content',
               file: '_data/content.json',
@@ -64,14 +61,12 @@ window.addEventListener('load', function() {
                   ]}
                 ]}
               ]
-            }
-          ]
-        },
-        {
-          name: 'theme',
-          label: 'Theme & Branding',
-          files: [
-            {
+            }]
+          },
+          {
+            name: 'theme',
+            label: 'Theme & Branding',
+            files: [{
               name: 'theme_settings',
               label: 'Theme Settings',
               file: '_data/settings.json',
@@ -87,13 +82,14 @@ window.addEventListener('load', function() {
                 { label: 'CTA Text', name: 'ctaText', widget: 'string' },
                 { label: 'Notification Bar Text', name: 'notificationText', widget: 'string' }
               ]
-            }
-          ]
-        }
-      ]
-    }
-  });
-});
-</script>
+            }]
+          }
+        ]
+      }
+    });
+  }
+  </script>
+</head>
+<body>
 </body>
 </html>

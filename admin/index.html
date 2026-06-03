@@ -214,7 +214,7 @@ let currentData = {};
 if (token) showDashboard();
 async function login() {
   const pw = document.getElementById('password-input').value;
-  const res = await fetch('/admin', { method: 'GET', headers: { 'Authorization': 'Bearer ' + pw } });
+  const res = await fetch('/api', { method: 'GET', headers: { 'Authorization': 'Bearer ' + pw } });
   if (res.ok) {
     token = pw;
     sessionStorage.setItem('elb_admin_token', pw);
@@ -238,7 +238,7 @@ function showDashboard() {
   if (token && !currentData.content) loadContent();
 }
 async function loadContent() {
-  const res = await fetch('/admin', { headers: { 'Authorization': 'Bearer ' + token } });
+  const res = await fetch('/api', { headers: { 'Authorization': 'Bearer ' + token } });
   if (res.ok) { const data = await res.json(); currentData = data; populateFields(data); }
 }
 function populateFields(data) {
@@ -299,7 +299,7 @@ function collectData() {
 function val(id) { return document.getElementById(id)?.value || ''; }
 async function saveContent() {
   const data = collectData();
-  const res = await fetch('/admin', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }, body: JSON.stringify(data) });
+  const res = await fetch('/api', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }, body: JSON.stringify(data) });
   if (res.ok) {
     dirty = false;
     document.getElementById('save-bar').classList.remove('visible');

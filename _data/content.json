@@ -1,0 +1,16 @@
+{
+  "hero": {
+    "headline": "Your story,",
+    "description": "ELB Creative is a full-service creative studio offering copywriting, content strategy, social media, photography, web design, and more.",
+    "location1": "Ontario, Canada",
+    "location2": "Atlanta, Georgia"
+  },
+  "about": {
+    "text": "I'm Anna — a writer, content strategist, and creative professional with a background in English literature, lifestyle media, and real estate marketing.",
+    "quote": "Great creative work doesn't just look good — it makes people feel something."
+  },
+  "contact": {
+    "email": "hello@elbcreative.co",
+    "instagram": "@rayyanelbaf"
+  }
+}

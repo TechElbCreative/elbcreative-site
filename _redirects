@@ -1,0 +1,2 @@
+/admin/* /admin/index.html 200
+/_data/* /_data/:splat 200

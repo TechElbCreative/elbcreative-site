@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ELB Creative — Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;1,400&family=Tenor+Sans&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Tenor Sans', sans-serif; background: #faf8f4; color: #1a0e06; min-height: 100vh; }
+.login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #1a0e06; }
+.login-box { background: #faf8f4; padding: 48px; width: 100%; max-width: 400px; text-align: center; }
+.login-logo { font-family: 'Playfair Display', serif; font-size: 28px; color: #1a0e06; margin-bottom: 8px; }
+.login-logo em { font-style: italic; color: #b8965a; }
+.login-sub { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #8c7b6b; margin-bottom: 32px; }
+.login-input { width: 100%; padding: 13px 16px; border: 1px solid #e8e2d8; background: #fff; font-family: 'Tenor Sans', sans-serif; font-size: 14px; color: #1a0e06; outline: none; margin-bottom: 16px; transition: border-color 0.3s; }
+.login-input:focus { border-color: #b8965a; }
+.login-btn { width: 100%; padding: 13px; background: #b8965a; color: #faf8f4; border: none; font-family: 'Tenor Sans', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; }
+.login-btn:hover { background: #1a0e06; }
+.login-error { color: #e8a0a0; font-size: 12px; margin-top: 12px; display: none; }
+.admin-wrap { display: none; }
+.admin-header { background: #1a0e06; padding: 0 40px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+.admin-logo { font-family: 'Playfair Display', serif; font-size: 18px; color: #faf8f4; }
+.admin-logo em { font-style: italic; color: #b8965a; }
+.admin-logout { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #8c7b6b; background: none; border: none; cursor: pointer; transition: color 0.3s; }
+.admin-logout:hover { color: #b8965a; }
+.admin-body { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 60px); }
+.admin-sidebar { background: #fff; border-right: 1px solid #e8e2d8; padding: 24px 0; }
+.sidebar-section { padding: 8px 24px; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #b8965a; margin-top: 16px; }
+.sidebar-btn { display: block; width: 100%; padding: 10px 24px; text-align: left; font-family: 'Tenor Sans', sans-serif; font-size: 13px; color: #6b5744; background: none; border: none; cursor: pointer; transition: all 0.2s; border-left: 2px solid transparent; }
+.sidebar-btn:hover, .sidebar-btn.active { background: #faf8f4; color: #1a0e06; border-left-color: #b8965a; }
+.admin-content { padding: 40px; max-width: 800px; }
+.panel { display: none; }
+.panel.active { display: block; }
+.panel-title { font-family: 'Playfair Display', serif; font-size: 28px; color: #1a0e06; margin-bottom: 8px; }
+.panel-title em { font-style: italic; color: #b8965a; }
+.panel-sub { font-size: 12px; color: #8c7b6b; margin-bottom: 32px; letter-spacing: 0.03em; }
+.field-group { margin-bottom: 20px; }
+.field-label { display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #b8965a; margin-bottom: 6px; }
+.field-input, .field-textarea { width: 100%; padding: 11px 14px; border: 1px solid #e8e2d8; background: #fff; font-family: 'Tenor Sans', sans-serif; font-size: 13px; color: #1a0e06; outline: none; transition: border-color 0.3s; }
+.field-input:focus, .field-textarea:focus { border-color: #b8965a; }
+.field-textarea { resize: vertical; min-height: 80px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.color-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.color-group { display: flex; flex-direction: column; gap: 6px; }
+.color-input { width: 100%; height: 44px; border: 1px solid #e8e2d8; border-radius: 2px; cursor: pointer; padding: 2px; }
+.section-title { font-family: 'Playfair Display', serif; font-size: 16px; color: #1a0e06; margin: 28px 0 16px; padding-bottom: 8px; border-bottom: 1px solid #e8e2d8; }
+.save-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #1a0e06; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; transform: translateY(100%); transition: transform 0.3s; z-index: 100; }
+.save-bar.visible { transform: translateY(0); }
+.save-msg { font-size: 12px; color: #8c7b6b; }
+.save-btn { padding: 10px 32px; background: #b8965a; color: #faf8f4; border: none; font-family: 'Tenor Sans', sans-serif; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; }
+.save-btn:hover { background: #d4b07a; }
+.save-success { color: #a8d5a2; font-size: 12px; display: none; }
+</style>
+</head>
+<body>
+<div class="login-wrap" id="login-wrap">
+  <div class="login-box">
+    <div class="login-logo">ELB <em>Creative</em></div>
+    <div class="login-sub">Admin Panel</div>
+    <input type="password" class="login-input" id="password-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')login()">
+    <button class="login-btn" onclick="login()">Sign In</button>
+    <div class="login-error" id="login-error">Incorrect password. Please try again.</div>
+  </div>
+</div>
+<div class="admin-wrap" id="admin-wrap">
+  <div class="admin-header">
+    <div class="admin-logo">ELB <em>Creative</em> — Admin</div>
+    <button class="admin-logout" onclick="logout()">Sign Out</button>
+  </div>
+  <div class="admin-body">
+    <div class="admin-sidebar">
+      <div class="sidebar-section">Content</div>
+      <button class="sidebar-btn active" onclick="showPanel('hero', this)">Hero Section</button>
+      <button class="sidebar-btn" onclick="showPanel('about', this)">About</button>
+      <button class="sidebar-btn" onclick="showPanel('packages', this)">Packages</button>
+      <button class="sidebar-btn" onclick="showPanel('contact', this)">Contact Info</button>
+      <div class="sidebar-section">Design</div>
+      <button class="sidebar-btn" onclick="showPanel('branding', this)">Colors & Branding</button>
+      <button class="sidebar-btn" onclick="showPanel('social', this)">Social Links</button>
+    </div>
+    <div class="admin-content">
+      <div class="panel active" id="panel-hero">
+        <div class="panel-title">Hero <em>Section</em></div>
+        <div class="panel-sub">The first thing visitors see on your homepage.</div>
+        <div class="field-group">
+          <label class="field-label">Notification Bar Text</label>
+          <input type="text" class="field-input" id="notification" oninput="markDirty()">
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label">Headline</label>
+            <input type="text" class="field-input" id="hero-headline" oninput="markDirty()">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Subtitle</label>
+            <input type="text" class="field-input" id="hero-subtitle" oninput="markDirty()">
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Description</label>
+          <textarea class="field-textarea" id="hero-description" oninput="markDirty()"></textarea>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label">Location 1</label>
+            <input type="text" class="field-input" id="hero-location1" oninput="markDirty()">
+          </div>
+          <div class="field-group">
+            <label class="field-label">Location 2</label>
+            <input type="text" class="field-input" id="hero-location2" oninput="markDirty()">
+          </div>
+        </div>
+      </div>
+      <div class="panel" id="panel-about">
+        <div class="panel-title">About <em>Section</em></div>
+        <div class="panel-sub">Your bio and personal statement.</div>
+        <div class="field-group">
+          <label class="field-label">About Text</label>
+          <textarea class="field-textarea" id="about-text" style="min-height:140px" oninput="markDirty()"></textarea>
+        </div>
+        <div class="field-group">
+          <label class="field-label">Pull Quote</label>
+          <input type="text" class="field-input" id="about-quote" oninput="markDirty()">
+        </div>
+      </div>
+      <div class="panel" id="panel-packages">
+        <div class="panel-title">Packages & <em>Pricing</em></div>
+        <div class="panel-sub">Update your retainer package prices and features.</div>
+        <div class="section-title">Starter Package</div>
+        <div class="field-group">
+          <label class="field-label">Price</label>
+          <input type="text" class="field-input" id="starter-price" oninput="markDirty()">
+        </div>
+        <div class="section-title">Growth Package</div>
+        <div class="field-group">
+          <label class="field-label">Price</label>
+          <input type="text" class="field-input" id="growth-price" oninput="markDirty()">
+        </div>
+        <div class="section-title">Full Service Package</div>
+        <div class="field-group">
+          <label class="field-label">Price</label>
+          <input type="text" class="field-input" id="full-price" oninput="markDirty()">
+        </div>
+      </div>
+      <div class="panel" id="panel-contact">
+        <div class="panel-title">Contact <em>Info</em></div>
+        <div class="panel-sub">How clients reach you.</div>
+        <div class="field-group">
+          <label class="field-label">Inquiry Email</label>
+          <input type="text" class="field-input" id="contact-email" oninput="markDirty()">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Instagram Handle</label>
+          <input type="text" class="field-input" id="contact-instagram" oninput="markDirty()">
+        </div>
+        <div class="field-group">
+          <label class="field-label">LinkedIn URL</label>
+          <input type="text" class="field-input" id="contact-linkedin" oninput="markDirty()">
+        </div>
+        <div class="field-group">
+          <label class="field-label">Calendly Link</label>
+          <input type="text" class="field-input" id="contact-calendly" oninput="markDirty()">
+        </div>
+      </div>
+      <div class="panel" id="panel-branding">
+        <div class="panel-title">Colors & <em>Branding</em></div>
+        <div class="panel-sub">Your brand color palette.</div>
+        <div class="color-row">
+          <div class="color-group">
+            <label class="field-label">Primary Color</label>
+            <input type="color" class="color-input" id="color-primary" oninput="markDirty()">
+          </div>
+          <div class="color-group">
+            <label class="field-label">Background Color</label>
+            <input type="color" class="color-input" id="color-secondary" oninput="markDirty()">
+          </div>
+          <div class="color-group">
+            <label class="field-label">Accent / Gold</label>
+            <input type="color" class="color-input" id="color-accent" oninput="markDirty()">
+          </div>
+        </div>
+      </div>
+      <div class="panel" id="panel-social">
+        <div class="panel-title">Social <em>Links</em></div>
+        <div class="panel-sub">Your social media and business links.</div>
+        <div class="field-group">
+          <label class="field-label">Instagram URL</label>
+          <input type="text" class="field-input" id="social-instagram" oninput="markDirty()">
+        </div>
+        <div class="field-group">
+          <label class="field-label">LinkedIn URL</label>
+          <input type="text" class="field-input" id="social-linkedin" oninput="markDirty()">
+        </div>
+        <div class="field-group">
+          <label class="field-label">CTA Button Text</label>
+          <input type="text" class="field-input" id="social-cta" oninput="markDirty()">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="save-bar" id="save-bar">
+  <div class="save-msg">You have unsaved changes</div>
+  <div style="display:flex;align-items:center;gap:16px">
+    <span class="save-success" id="save-success">✓ Saved successfully</span>
+    <button class="save-btn" onclick="saveContent()">Save Changes</button>
+  </div>
+</div>
+<script>
+let token = sessionStorage.getItem('elb_admin_token');
+let dirty = false;
+let currentData = {};
+if (token) showDashboard();
+async function login() {
+  const pw = document.getElementById('password-input').value;
+  const res = await fetch('/admin', { method: 'GET', headers: { 'Authorization': 'Bearer ' + pw } });
+  if (res.ok) {
+    token = pw;
+    sessionStorage.setItem('elb_admin_token', pw);
+    const data = await res.json();
+    currentData = data;
+    populateFields(data);
+    showDashboard();
+  } else {
+    document.getElementById('login-error').style.display = 'block';
+  }
+}
+function logout() {
+  sessionStorage.removeItem('elb_admin_token');
+  token = null;
+  document.getElementById('admin-wrap').style.display = 'none';
+  document.getElementById('login-wrap').style.display = 'flex';
+}
+function showDashboard() {
+  document.getElementById('login-wrap').style.display = 'none';
+  document.getElementById('admin-wrap').style.display = 'block';
+  if (token && !currentData.content) loadContent();
+}
+async function loadContent() {
+  const res = await fetch('/admin', { headers: { 'Authorization': 'Bearer ' + token } });
+  if (res.ok) { const data = await res.json(); currentData = data; populateFields(data); }
+}
+function populateFields(data) {
+  const c = data.content || {};
+  const s = data.settings || {};
+  setValue('notification', c.notification);
+  setValue('hero-headline', c.hero?.headline);
+  setValue('hero-subtitle', c.hero?.subtitle);
+  setValue('hero-description', c.hero?.description);
+  setValue('hero-location1', c.hero?.location1);
+  setValue('hero-location2', c.hero?.location2);
+  setValue('about-text', c.about?.text);
+  setValue('about-quote', c.about?.quote);
+  setValue('starter-price', c.packages?.starter?.price);
+  setValue('growth-price', c.packages?.growth?.price);
+  setValue('full-price', c.packages?.full?.price);
+  setValue('contact-email', c.contact?.email);
+  setValue('contact-instagram', c.contact?.instagram);
+  setValue('contact-linkedin', c.contact?.linkedin);
+  setValue('contact-calendly', s.calendlyLink);
+  setValue('color-primary', s.primaryColor || '#1a0e06');
+  setValue('color-secondary', s.secondaryColor || '#faf8f4');
+  setValue('color-accent', s.accentColor || '#b8965a');
+  setValue('social-instagram', s.instagramUrl);
+  setValue('social-linkedin', s.linkedinUrl);
+  setValue('social-cta', s.ctaText);
+}
+function setValue(id, val) {
+  const el = document.getElementById(id);
+  if (el && val !== undefined && val !== null) el.value = val;
+}
+function collectData() {
+  return {
+    content: {
+      notification: val('notification'),
+      hero: { headline: val('hero-headline'), subtitle: val('hero-subtitle'), description: val('hero-description'), location1: val('hero-location1'), location2: val('hero-location2') },
+      about: { text: val('about-text'), quote: val('about-quote') },
+      packages: {
+        starter: { price: val('starter-price'), features: currentData.content?.packages?.starter?.features || [] },
+        growth: { price: val('growth-price'), features: currentData.content?.packages?.growth?.features || [] },
+        full: { price: val('full-price'), features: currentData.content?.packages?.full?.features || [] }
+      },
+      contact: { email: val('contact-email'), instagram: val('contact-instagram'), linkedin: val('contact-linkedin') }
+    },
+    settings: {
+      primaryColor: val('color-primary'),
+      secondaryColor: val('color-secondary'),
+      accentColor: val('color-accent'),
+      instagramUrl: val('social-instagram'),
+      linkedinUrl: val('social-linkedin'),
+      contactEmail: val('contact-email'),
+      calendlyLink: val('contact-calendly'),
+      ctaText: val('social-cta'),
+      notificationText: val('notification')
+    }
+  };
+}
+function val(id) { return document.getElementById(id)?.value || ''; }
+async function saveContent() {
+  const data = collectData();
+  const res = await fetch('/admin', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }, body: JSON.stringify(data) });
+  if (res.ok) {
+    dirty = false;
+    document.getElementById('save-bar').classList.remove('visible');
+    document.getElementById('save-success').style.display = 'inline';
+    setTimeout(() => { document.getElementById('save-success').style.display = 'none'; }, 3000);
+  }
+}
+function markDirty() { dirty = true; document.getElementById('save-bar').classList.add('visible'); }
+function showPanel(name, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + name).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>

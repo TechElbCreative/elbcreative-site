@@ -4,7 +4,10 @@ export async function onRequest(context) {
   const code = url.searchParams.get('code');
 
   if (!code) {
-    return new Response('Missing code', { status: 400 });
+    return new Response(JSON.stringify({ error: 'Missing code' }), {
+      status: 400,
+      headers: { 'Content-Type': 'application/json' }
+    });
   }
 
   const response = await fetch('https://github.com/login/oauth/access_token', {
@@ -21,36 +24,11 @@ export async function onRequest(context) {
   });
 
   const data = await response.json();
-  const token = data.access_token;
-  const provider = 'github';
 
-  return new Response(`<!DOCTYPE html>
-<html>
-<body>
-<script>
-(function() {
-  var data = {
-    token: "${token}",
-    provider: "${provider}"
-  };
-  var message = "authorization:" + data.provider + ":success:" + JSON.stringify(data);
-  function sendMessage() {
-    if (window.opener) {
-      window.opener.postMessage(message, document.location.origin);
-      window.opener.postMessage(message, 'https://elbcreative.co');
-      setTimeout(function() { window.close(); }, 1000);
+  return new Response(JSON.stringify({ token: data.access_token }), {
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': 'https://elbcreative.co'
     }
-  }
-  if (document.readyState === 'complete') {
-    sendMessage();
-  } else {
-    window.addEventListener('load', sendMessage);
-  }
-})();
-<\/script>
-<p>Authenticating... you can close this window.</p>
-</body>
-</html>`, {
-    headers: { 'Content-Type': 'text/html' }
   });
 }

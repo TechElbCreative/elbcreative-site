@@ -13,47 +13,87 @@ body { font-family: 'Tenor Sans', sans-serif; background: #faf8f4; color: #1a0e0
 .login-logo { font-family: 'Playfair Display', serif; font-size: 28px; color: #1a0e06; margin-bottom: 8px; }
 .login-logo em { font-style: italic; color: #b8965a; }
 .login-sub { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: #8c7b6b; margin-bottom: 32px; }
-.login-input { width: 100%; padding: 13px 16px; border: 1px solid #e8e2d8; background: #fff; font-family: 'Tenor Sans', sans-serif; font-size: 14px; color: #1a0e06; outline: none; margin-bottom: 16px; transition: border-color 0.3s; }
+.login-input { width: 100%; padding: 13px 16px; border: 1px solid #e8e2d8; background: #fff; font-family: 'Tenor Sans', sans-serif; font-size: 14px; color: #1a0e06; outline: none; margin-bottom: 16px; }
 .login-input:focus { border-color: #b8965a; }
 .login-btn { width: 100%; padding: 13px; background: #b8965a; color: #faf8f4; border: none; font-family: 'Tenor Sans', sans-serif; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; }
 .login-btn:hover { background: #1a0e06; }
 .login-error { color: #e8a0a0; font-size: 12px; margin-top: 12px; display: none; }
 .admin-wrap { display: none; }
-.admin-header { background: #1a0e06; padding: 0 40px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
-.admin-logo { font-family: 'Playfair Display', serif; font-size: 18px; color: #faf8f4; }
+.admin-header { background: #1a0e06; padding: 0 32px; height: 56px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 200; }
+.admin-logo { font-family: 'Playfair Display', serif; font-size: 17px; color: #faf8f4; }
 .admin-logo em { font-style: italic; color: #b8965a; }
-.admin-logout { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #8c7b6b; background: none; border: none; cursor: pointer; transition: color 0.3s; }
+.admin-header-right { display: flex; align-items: center; gap: 20px; }
+.admin-view-site { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #b8965a; text-decoration: none; border: 1px solid rgba(184,150,90,0.3); padding: 5px 12px; transition: all 0.2s; }
+.admin-view-site:hover { background: rgba(184,150,90,0.1); }
+.admin-logout { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #8c7b6b; background: none; border: none; cursor: pointer; font-family: 'Tenor Sans', sans-serif; }
 .admin-logout:hover { color: #b8965a; }
-.admin-body { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 60px); }
-.admin-sidebar { background: #fff; border-right: 1px solid #e8e2d8; padding: 24px 0; }
-.sidebar-section { padding: 8px 24px; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #b8965a; margin-top: 16px; }
-.sidebar-btn { display: block; width: 100%; padding: 10px 24px; text-align: left; font-family: 'Tenor Sans', sans-serif; font-size: 13px; color: #6b5744; background: none; border: none; cursor: pointer; transition: all 0.2s; border-left: 2px solid transparent; }
-.sidebar-btn:hover, .sidebar-btn.active { background: #faf8f4; color: #1a0e06; border-left-color: #b8965a; }
-.admin-content { padding: 40px; max-width: 800px; }
+.admin-body { display: grid; grid-template-columns: 230px 1fr; height: calc(100vh - 56px); overflow: hidden; }
+.admin-sidebar { background: #fff; border-right: 1px solid #e8e2d8; overflow-y: auto; padding: 16px 0 40px; }
+.sidebar-group-label { padding: 16px 20px 6px; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: #b8965a; }
+.sidebar-btn { display: block; width: 100%; padding: 9px 20px; text-align: left; font-family: 'Tenor Sans', sans-serif; font-size: 12px; color: #6b5744; background: none; border: none; border-left: 2px solid transparent; cursor: pointer; transition: all 0.2s; }
+.sidebar-btn:hover { background: #faf8f4; color: #1a0e06; }
+.sidebar-btn.active { background: #faf8f4; color: #1a0e06; border-left-color: #b8965a; }
+.admin-content { overflow-y: auto; padding: 36px 48px 120px; }
 .panel { display: none; }
 .panel.active { display: block; }
-.panel-title { font-family: 'Playfair Display', serif; font-size: 28px; color: #1a0e06; margin-bottom: 8px; }
+.panel-title { font-family: 'Playfair Display', serif; font-size: 26px; margin-bottom: 6px; }
 .panel-title em { font-style: italic; color: #b8965a; }
-.panel-sub { font-size: 12px; color: #8c7b6b; margin-bottom: 32px; letter-spacing: 0.03em; }
-.field-group { margin-bottom: 20px; }
-.field-label { display: block; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: #b8965a; margin-bottom: 6px; }
-.field-input, .field-textarea { width: 100%; padding: 11px 14px; border: 1px solid #e8e2d8; background: #fff; font-family: 'Tenor Sans', sans-serif; font-size: 13px; color: #1a0e06; outline: none; transition: border-color 0.3s; }
+.panel-sub { font-size: 12px; color: #8c7b6b; margin-bottom: 28px; line-height: 1.7; }
+.field-group { margin-bottom: 18px; }
+.field-label { display: block; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: #b8965a; margin-bottom: 5px; }
+.field-hint { font-size: 11px; color: #a8998a; margin-bottom: 5px; font-style: italic; }
+.field-input, .field-textarea { width: 100%; padding: 10px 13px; border: 1px solid #e8e2d8; background: #fff; font-family: 'Tenor Sans', sans-serif; font-size: 13px; color: #1a0e06; outline: none; transition: border-color 0.25s; }
 .field-input:focus, .field-textarea:focus { border-color: #b8965a; }
-.field-textarea { resize: vertical; min-height: 80px; }
-.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.color-row { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
-.color-group { display: flex; flex-direction: column; gap: 6px; }
-.color-input { width: 100%; height: 44px; border: 1px solid #e8e2d8; border-radius: 2px; cursor: pointer; padding: 2px; }
-.section-title { font-family: 'Playfair Display', serif; font-size: 16px; color: #1a0e06; margin: 28px 0 16px; padding-bottom: 8px; border-bottom: 1px solid #e8e2d8; }
-.save-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #1a0e06; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; transform: translateY(100%); transition: transform 0.3s; z-index: 100; }
+.field-textarea { resize: vertical; min-height: 80px; line-height: 1.6; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.color-pair { display: flex; gap: 8px; align-items: center; }
+.color-swatch { width: 42px; height: 42px; border: 1px solid #e8e2d8; border-radius: 2px; cursor: pointer; padding: 2px; flex-shrink: 0; }
+.color-hex { flex: 1; }
+.section-divider { display: flex; align-items: center; justify-content: space-between; margin: 28px 0 16px; padding-bottom: 10px; border-bottom: 1px solid #e8e2d8; }
+.section-divider-title { font-family: 'Playfair Display', serif; font-size: 15px; color: #1a0e06; }
+.section-divider-title em { font-style: italic; color: #b8965a; }
+.add-item-btn { display: inline-flex; align-items: center; gap: 6px; font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: #b8965a; background: none; border: 1px solid rgba(184,150,90,0.35); padding: 7px 14px; cursor: pointer; font-family: 'Tenor Sans', sans-serif; transition: all 0.2s; margin-top: 8px; }
+.add-item-btn:hover { background: rgba(184,150,90,0.08); }
+.remove-btn { font-size: 10px; color: #c49090; background: none; border: none; cursor: pointer; font-family: 'Tenor Sans', sans-serif; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 8px; }
+.remove-btn:hover { color: #e85555; }
+.card-item { background: #fff; border: 1px solid #e8e2d8; padding: 18px; margin-bottom: 10px; }
+.card-item-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+.card-item-label { font-size: 11px; font-weight: 600; color: #1a0e06; letter-spacing: 0.06em; text-transform: uppercase; }
+.features-wrap { display: flex; flex-direction: column; gap: 7px; margin-top: 6px; }
+.feature-row { display: flex; gap: 7px; align-items: center; }
+.feature-row .field-input { flex: 1; }
+.feature-remove { background: none; border: none; color: #c49090; cursor: pointer; font-size: 18px; padding: 0 4px; line-height: 1; flex-shrink: 0; }
+.feature-remove:hover { color: #e85555; }
+.toggle-list { display: flex; flex-direction: column; gap: 14px; }
+.toggle-row { display: flex; align-items: center; gap: 12px; }
+.toggle { position: relative; width: 42px; height: 23px; flex-shrink: 0; }
+.toggle input { opacity: 0; width: 0; height: 0; }
+.toggle-slider { position: absolute; cursor: pointer; inset: 0; background: #e8e2d8; border-radius: 23px; transition: 0.3s; }
+.toggle-slider:before { content: ''; position: absolute; width: 17px; height: 17px; left: 3px; bottom: 3px; background: #fff; border-radius: 50%; transition: 0.3s; }
+.toggle input:checked + .toggle-slider { background: #b8965a; }
+.toggle input:checked + .toggle-slider:before { transform: translateX(19px); }
+.toggle-label { font-size: 13px; color: #3d2410; }
+.toggle-desc { font-size: 11px; color: #8c7b6b; }
+.save-bar { position: fixed; bottom: 0; left: 0; right: 0; background: #1a0e06; padding: 14px 40px; display: flex; align-items: center; justify-content: space-between; transform: translateY(100%); transition: transform 0.3s; z-index: 500; }
 .save-bar.visible { transform: translateY(0); }
-.save-msg { font-size: 12px; color: #8c7b6b; }
-.save-btn { padding: 10px 32px; background: #b8965a; color: #faf8f4; border: none; font-family: 'Tenor Sans', sans-serif; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; }
+.save-bar-msg { font-size: 11px; color: #8c7b6b; }
+.save-bar-right { display: flex; align-items: center; gap: 16px; }
+.save-success-msg { font-size: 12px; color: #a8d5a2; display: none; }
+.save-btn { padding: 10px 30px; background: #b8965a; color: #faf8f4; border: none; font-family: 'Tenor Sans', sans-serif; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; }
 .save-btn:hover { background: #d4b07a; }
-.save-success { color: #a8d5a2; font-size: 12px; display: none; }
+.password-msg { font-size: 12px; margin-top: 8px; display: none; }
+.password-msg.ok { color: #a8d5a2; }
+.password-msg.err { color: #e8a0a0; }
+.nav-item-row { display: grid; grid-template-columns: 1fr 1fr auto; gap: 10px; align-items: center; margin-bottom: 8px; }
+.dropdown-section { background: #faf8f4; border: 1px solid #e8e2d8; padding: 14px; margin-bottom: 10px; }
+.dropdown-section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.dropdown-section-title { font-size: 11px; font-weight: 600; color: #1a0e06; text-transform: uppercase; letter-spacing: 0.08em; }
+.strip-item-row { display: flex; gap: 8px; align-items: center; margin-bottom: 6px; }
+.strip-item-row .field-input { flex: 1; }
 </style>
 </head>
 <body>
+
 <div class="login-wrap" id="login-wrap">
   <div class="login-box">
     <div class="login-logo">ELB <em>Creative</em></div>
@@ -63,257 +103,686 @@ body { font-family: 'Tenor Sans', sans-serif; background: #faf8f4; color: #1a0e0
     <div class="login-error" id="login-error">Incorrect password. Please try again.</div>
   </div>
 </div>
+
 <div class="admin-wrap" id="admin-wrap">
   <div class="admin-header">
-    <div class="admin-logo">ELB <em>Creative</em> — Admin</div>
-    <button class="admin-logout" onclick="logout()">Sign Out</button>
+    <div class="admin-logo">ELB <em>Creative</em> &mdash; Admin</div>
+    <div class="admin-header-right">
+      <a href="/" target="_blank" class="admin-view-site">View Live Site &rarr;</a>
+      <button class="admin-logout" onclick="logout()">Sign Out</button>
+    </div>
   </div>
   <div class="admin-body">
     <div class="admin-sidebar">
-      <div class="sidebar-section">Content</div>
-      <button class="sidebar-btn active" onclick="showPanel('hero', this)">Hero Section</button>
-      <button class="sidebar-btn" onclick="showPanel('about', this)">About</button>
-      <button class="sidebar-btn" onclick="showPanel('packages', this)">Packages</button>
-      <button class="sidebar-btn" onclick="showPanel('contact', this)">Contact Info</button>
-      <div class="sidebar-section">Design</div>
-      <button class="sidebar-btn" onclick="showPanel('branding', this)">Colors & Branding</button>
-      <button class="sidebar-btn" onclick="showPanel('social', this)">Social Links</button>
+      <div class="sidebar-group-label">Global</div>
+      <button class="sidebar-btn active" onclick="showPanel('site',this)">Site &amp; SEO</button>
+      <button class="sidebar-btn" onclick="showPanel('colors',this)">Colors</button>
+      <button class="sidebar-btn" onclick="showPanel('fonts',this)">Fonts</button>
+      <button class="sidebar-btn" onclick="showPanel('visibility',this)">Show / Hide Sections</button>
+      <div class="sidebar-group-label">Sections</div>
+      <button class="sidebar-btn" onclick="showPanel('notification',this)">Notification Bar</button>
+      <button class="sidebar-btn" onclick="showPanel('nav',this)">Navigation</button>
+      <button class="sidebar-btn" onclick="showPanel('hero',this)">Hero</button>
+      <button class="sidebar-btn" onclick="showPanel('strip',this)">Scrolling Strip</button>
+      <button class="sidebar-btn" onclick="showPanel('about',this)">About</button>
+      <button class="sidebar-btn" onclick="showPanel('services',this)">Services</button>
+      <button class="sidebar-btn" onclick="showPanel('packages',this)">Packages &amp; Pricing</button>
+      <button class="sidebar-btn" onclick="showPanel('work',this)">Portfolio / Work</button>
+      <button class="sidebar-btn" onclick="showPanel('process',this)">Process Steps</button>
+      <button class="sidebar-btn" onclick="showPanel('contact',this)">Contact Section</button>
+      <button class="sidebar-btn" onclick="showPanel('footer',this)">Footer</button>
+      <div class="sidebar-group-label">Business</div>
+      <button class="sidebar-btn" onclick="showPanel('social',this)">Social &amp; Links</button>
+      <button class="sidebar-btn" onclick="showPanel('form',this)">Contact Form</button>
+      <button class="sidebar-btn" onclick="showPanel('settings',this)">Admin Settings</button>
     </div>
+
     <div class="admin-content">
-      <div class="panel active" id="panel-hero">
-        <div class="panel-title">Hero <em>Section</em></div>
-        <div class="panel-sub">The first thing visitors see on your homepage.</div>
-        <div class="field-group">
-          <label class="field-label">Notification Bar Text</label>
-          <input type="text" class="field-input" id="notification" oninput="markDirty()">
+
+      <div class="panel active" id="panel-site">
+        <div class="panel-title">Site &amp; <em>SEO</em></div>
+        <div class="panel-sub">Browser tab title, meta description, and social sharing settings.</div>
+        <div class="field-group"><label class="field-label">Browser Tab Title</label><input type="text" class="field-input" id="seo-title" oninput="markDirty()" placeholder="ELB Creative &mdash; Anna El-Baf"></div>
+        <div class="field-group"><label class="field-label">Meta Description (shows in Google results)</label><textarea class="field-textarea" id="seo-description" oninput="markDirty()"></textarea></div>
+        <div class="section-divider"><div class="section-divider-title">Social Sharing <em>(OG Tags)</em></div></div>
+        <div class="field-group"><label class="field-label">OG Title (shown when link is shared)</label><input type="text" class="field-input" id="og-title" oninput="markDirty()" placeholder="ELB Creative"></div>
+        <div class="field-group"><label class="field-label">OG Description</label><textarea class="field-textarea" id="og-description" oninput="markDirty()"></textarea></div>
+        <div class="field-group"><label class="field-label">Google Analytics ID (optional)</label><input type="text" class="field-input" id="ga-id" oninput="markDirty()" placeholder="G-XXXXXXXXXX"></div>
+      </div>
+
+      <div class="panel" id="panel-colors">
+        <div class="panel-title">Brand <em>Colors</em></div>
+        <div class="panel-sub">Your brand color palette. Changes apply site-wide. Type a hex code or use the color picker.</div>
+        <div class="section-divider"><div class="section-divider-title">Primary Colors</div></div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Espresso &mdash; Primary / Text</label><div class="color-pair"><input type="color" class="color-swatch" id="color-espresso" oninput="syncColorToHex('espresso')" value="#1a0e06"><input type="text" class="field-input color-hex" id="color-espresso-hex" oninput="syncHexToColor('espresso')" placeholder="#1a0e06" maxlength="7"></div></div>
+          <div class="field-group"><label class="field-label">Ivory &mdash; Background</label><div class="color-pair"><input type="color" class="color-swatch" id="color-ivory" oninput="syncColorToHex('ivory')" value="#faf8f4"><input type="text" class="field-input color-hex" id="color-ivory-hex" oninput="syncHexToColor('ivory')" placeholder="#faf8f4" maxlength="7"></div></div>
         </div>
         <div class="field-row">
-          <div class="field-group">
-            <label class="field-label">Headline</label>
-            <input type="text" class="field-input" id="hero-headline" oninput="markDirty()">
-          </div>
-          <div class="field-group">
-            <label class="field-label">Subtitle</label>
-            <input type="text" class="field-input" id="hero-subtitle" oninput="markDirty()">
-          </div>
+          <div class="field-group"><label class="field-label">Gold &mdash; Accent</label><div class="color-pair"><input type="color" class="color-swatch" id="color-gold" oninput="syncColorToHex('gold')" value="#b8965a"><input type="text" class="field-input color-hex" id="color-gold-hex" oninput="syncHexToColor('gold')" placeholder="#b8965a" maxlength="7"></div></div>
+          <div class="field-group"><label class="field-label">Gold Light &mdash; Hover Accent</label><div class="color-pair"><input type="color" class="color-swatch" id="color-gold-light" oninput="syncColorToHex('gold-light')" value="#d4b07a"><input type="text" class="field-input color-hex" id="color-gold-light-hex" oninput="syncHexToColor('gold-light')" placeholder="#d4b07a" maxlength="7"></div></div>
         </div>
-        <div class="field-group">
-          <label class="field-label">Description</label>
-          <textarea class="field-textarea" id="hero-description" oninput="markDirty()"></textarea>
+        <div class="section-divider"><div class="section-divider-title">Supporting Colors</div></div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Stone &mdash; Borders / Dividers</label><div class="color-pair"><input type="color" class="color-swatch" id="color-stone" oninput="syncColorToHex('stone')" value="#e8e2d8"><input type="text" class="field-input color-hex" id="color-stone-hex" oninput="syncHexToColor('stone')" placeholder="#e8e2d8" maxlength="7"></div></div>
+          <div class="field-group"><label class="field-label">Linen &mdash; Section Backgrounds</label><div class="color-pair"><input type="color" class="color-swatch" id="color-linen" oninput="syncColorToHex('linen')" value="#f0ebe3"><input type="text" class="field-input color-hex" id="color-linen-hex" oninput="syncHexToColor('linen')" placeholder="#f0ebe3" maxlength="7"></div></div>
         </div>
         <div class="field-row">
-          <div class="field-group">
-            <label class="field-label">Location 1</label>
-            <input type="text" class="field-input" id="hero-location1" oninput="markDirty()">
-          </div>
-          <div class="field-group">
-            <label class="field-label">Location 2</label>
-            <input type="text" class="field-input" id="hero-location2" oninput="markDirty()">
-          </div>
+          <div class="field-group"><label class="field-label">Warm Gray &mdash; Body Text</label><div class="color-pair"><input type="color" class="color-swatch" id="color-warm-gray" oninput="syncColorToHex('warm-gray')" value="#8c7b6b"><input type="text" class="field-input color-hex" id="color-warm-gray-hex" oninput="syncHexToColor('warm-gray')" placeholder="#8c7b6b" maxlength="7"></div></div>
+          <div class="field-group"><label class="field-label">Brown &mdash; Dark Hover</label><div class="color-pair"><input type="color" class="color-swatch" id="color-brown" oninput="syncColorToHex('brown')" value="#3d2410"><input type="text" class="field-input color-hex" id="color-brown-hex" oninput="syncHexToColor('brown')" placeholder="#3d2410" maxlength="7"></div></div>
         </div>
       </div>
+
+      <div class="panel" id="panel-fonts">
+        <div class="panel-title">Fonts &amp; <em>Typography</em></div>
+        <div class="panel-sub">Uses Google Fonts. Type the font name exactly as it appears on fonts.google.com.</div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Heading Font</label><input type="text" class="field-input" id="font-heading" oninput="markDirty()" placeholder="Playfair Display"><div class="field-hint">Titles, headlines, quotes</div></div>
+          <div class="field-group"><label class="field-label">Body Font</label><input type="text" class="field-input" id="font-body" oninput="markDirty()" placeholder="Tenor Sans"><div class="field-hint">Body text, nav, buttons</div></div>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-visibility">
+        <div class="panel-title">Show / <em>Hide Sections</em></div>
+        <div class="panel-sub">Toggle entire sections on or off. Hidden sections won't appear on the live site.</div>
+        <div class="toggle-list">
+          <div class="toggle-row"><label class="toggle"><input type="checkbox" id="show-notification" onchange="markDirty()" checked><span class="toggle-slider"></span></label><div><div class="toggle-label">Notification Bar</div><div class="toggle-desc">Top announcement banner</div></div></div>
+          <div class="toggle-row"><label class="toggle"><input type="checkbox" id="show-serviceNav" onchange="markDirty()" checked><span class="toggle-slider"></span></label><div><div class="toggle-label">Service Navigation Row</div><div class="toggle-desc">Dropdown nav row below main nav</div></div></div>
+          <div class="toggle-row"><label class="toggle"><input type="checkbox" id="show-strip" onchange="markDirty()" checked><span class="toggle-slider"></span></label><div><div class="toggle-label">Scrolling Strip</div><div class="toggle-desc">Animated ticker below hero</div></div></div>
+          <div class="toggle-row"><label class="toggle"><input type="checkbox" id="show-about" onchange="markDirty()" checked><span class="toggle-slider"></span></label><div><div class="toggle-label">About Section</div><div class="toggle-desc">Bio, quote, and stat tiles</div></div></div>
+          <div class="toggle-row"><label class="toggle"><input type="checkbox" id="show-services" onchange="markDirty()" checked><span class="toggle-slider"></span></label><div><div class="toggle-label">Services Section</div><div class="toggle-desc">Tabbed service cards</div></div></div>
+          <div class="toggle-row"><label class="toggle"><input type="checkbox" id="show-packages" onchange="markDirty()" checked><span class="toggle-slider"></span></label><div><div class="toggle-label">Packages Section</div><div class="toggle-desc">Pricing and retainer tiers</div></div></div>
+          <div class="toggle-row"><label class="toggle"><input type="checkbox" id="show-work" onchange="markDirty()" checked><span class="toggle-slider"></span></label><div><div class="toggle-label">Portfolio / Work Section</div><div class="toggle-desc">Case study cards</div></div></div>
+          <div class="toggle-row"><label class="toggle"><input type="checkbox" id="show-process" onchange="markDirty()" checked><span class="toggle-slider"></span></label><div><div class="toggle-label">Process Steps Section</div><div class="toggle-desc">How It Works steps</div></div></div>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-notification">
+        <div class="panel-title">Notification <em>Bar</em></div>
+        <div class="panel-sub">The announcement bar at the very top of the site.</div>
+        <div class="field-group"><label class="field-label">Bar Text (before highlighted phrase)</label><input type="text" class="field-input" id="notify-before" oninput="markDirty()" placeholder="Now accepting new clients &mdash;"></div>
+        <div class="field-group"><label class="field-label">Highlighted Phrase (shows in gold)</label><input type="text" class="field-input" id="notify-highlight" oninput="markDirty()" placeholder="Ontario &amp; Atlanta"></div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">CTA Link Text</label><input type="text" class="field-input" id="notify-cta-text" oninput="markDirty()" placeholder="Book a free discovery call &rarr;"></div>
+          <div class="field-group"><label class="field-label">CTA Link Destination</label><input type="text" class="field-input" id="notify-cta-link" oninput="markDirty()" placeholder="#contact"></div>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-nav">
+        <div class="panel-title">Navigation</div>
+        <div class="panel-sub">Logo, nav links, and the CTA button in the top right.</div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Logo &mdash; Plain Text</label><input type="text" class="field-input" id="nav-logo-plain" oninput="markDirty()" placeholder="ELB"></div>
+          <div class="field-group"><label class="field-label">Logo &mdash; Italic Gold Text</label><input type="text" class="field-input" id="nav-logo-italic" oninput="markDirty()" placeholder="Creative"></div>
+        </div>
+        <div class="section-divider"><div class="section-divider-title">Nav Links</div></div>
+        <div class="nav-item-row"><input type="text" class="field-input" id="navlink-1-text" oninput="markDirty()" placeholder="About"><input type="text" class="field-input" id="navlink-1-href" oninput="markDirty()" placeholder="#about"><span style="font-size:11px;color:#8c7b6b;white-space:nowrap">link 1</span></div>
+        <div class="nav-item-row"><input type="text" class="field-input" id="navlink-2-text" oninput="markDirty()" placeholder="Work"><input type="text" class="field-input" id="navlink-2-href" oninput="markDirty()" placeholder="#work"><span style="font-size:11px;color:#8c7b6b;white-space:nowrap">link 2</span></div>
+        <div class="nav-item-row"><input type="text" class="field-input" id="navlink-3-text" oninput="markDirty()" placeholder="Packages"><input type="text" class="field-input" id="navlink-3-href" oninput="markDirty()" placeholder="#packages"><span style="font-size:11px;color:#8c7b6b;white-space:nowrap">link 3</span></div>
+        <div class="section-divider"><div class="section-divider-title">CTA Button</div></div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Button Text</label><input type="text" class="field-input" id="nav-cta-text" oninput="markDirty()" placeholder="Work With Me"></div>
+          <div class="field-group"><label class="field-label">Button Link</label><input type="text" class="field-input" id="nav-cta-href" oninput="markDirty()" placeholder="#contact"></div>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-hero">
+        <div class="panel-title">Hero <em>Section</em></div>
+        <div class="panel-sub">The first thing visitors see. Every piece of text and both CTAs are editable here.</div>
+        <div class="field-group"><label class="field-label">Eyebrow Text (small text above headline)</label><input type="text" class="field-input" id="hero-eyebrow" oninput="markDirty()" placeholder="Full-Service Creative Studio"></div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Headline Line 1 (large, dark)</label><input type="text" class="field-input" id="hero-headline" oninput="markDirty()" placeholder="Your story,"></div>
+          <div class="field-group"><label class="field-label">Headline Line 2 (italic, gold)</label><input type="text" class="field-input" id="hero-subtitle" oninput="markDirty()" placeholder="told beautifully."></div>
+        </div>
+        <div class="field-group"><label class="field-label">Description Paragraph</label><textarea class="field-textarea" id="hero-description" oninput="markDirty()"></textarea></div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Location 1</label><input type="text" class="field-input" id="hero-location1" oninput="markDirty()" placeholder="Ontario, Canada"></div>
+          <div class="field-group"><label class="field-label">Location 2</label><input type="text" class="field-input" id="hero-location2" oninput="markDirty()" placeholder="Atlanta, Georgia"></div>
+        </div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Primary Button Text</label><input type="text" class="field-input" id="hero-btn-primary" oninput="markDirty()" placeholder="View Packages"></div>
+          <div class="field-group"><label class="field-label">Primary Button Link</label><input type="text" class="field-input" id="hero-btn-primary-href" oninput="markDirty()" placeholder="#packages"></div>
+        </div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Secondary Link Text</label><input type="text" class="field-input" id="hero-btn-secondary" oninput="markDirty()" placeholder="Explore Services"></div>
+          <div class="field-group"><label class="field-label">Secondary Link Destination</label><input type="text" class="field-input" id="hero-btn-secondary-href" oninput="markDirty()" placeholder="#services"></div>
+        </div>
+        <div class="section-divider"><div class="section-divider-title">Right Panel Badge</div></div>
+        <div class="field-group"><label class="field-label">Monogram Letter</label><input type="text" class="field-input" id="hero-monogram" oninput="markDirty()" placeholder="A" maxlength="2"></div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Badge Label (small gold text)</label><input type="text" class="field-input" id="hero-badge-label" oninput="markDirty()" placeholder="Creative Studio"></div>
+          <div class="field-group"><label class="field-label">Badge Value</label><input type="text" class="field-input" id="hero-badge-value" oninput="markDirty()" placeholder="ELB Creative"></div>
+        </div>
+      </div>
+
+      <div class="panel" id="panel-strip">
+        <div class="panel-title">Scrolling <em>Strip</em></div>
+        <div class="panel-sub">The animated ticker bar below the hero. Edit each item and the separator symbol between them.</div>
+        <div class="field-group"><label class="field-label">Separator Symbol (between each item)</label><input type="text" class="field-input" id="strip-separator" oninput="markDirty()" placeholder="&#10022;" maxlength="5"></div>
+        <div class="field-group"><label class="field-label">Strip Items</label><div id="strip-items"></div><button class="add-item-btn" onclick="addStripItem()">+ Add Item</button></div>
+      </div>
+
       <div class="panel" id="panel-about">
         <div class="panel-title">About <em>Section</em></div>
-        <div class="panel-sub">Your bio and personal statement.</div>
-        <div class="field-group">
-          <label class="field-label">About Text</label>
-          <textarea class="field-textarea" id="about-text" style="min-height:140px" oninput="markDirty()"></textarea>
+        <div class="panel-sub">Bio text, pull quote, CTA, and the four stat tiles.</div>
+        <div class="field-group"><label class="field-label">Section Tag (small gold label)</label><input type="text" class="field-input" id="about-tag" oninput="markDirty()" placeholder="About Anna"></div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Heading Line 1 (dark)</label><input type="text" class="field-input" id="about-h1" oninput="markDirty()" placeholder="Creative mind."></div>
+          <div class="field-group"><label class="field-label">Heading Line 2 (italic gold)</label><input type="text" class="field-input" id="about-h2" oninput="markDirty()" placeholder="Strategic voice."></div>
         </div>
-        <div class="field-group">
-          <label class="field-label">Pull Quote</label>
-          <input type="text" class="field-input" id="about-quote" oninput="markDirty()">
+        <div class="field-group"><label class="field-label">Bio Text</label><textarea class="field-textarea" id="about-text" style="min-height:120px" oninput="markDirty()"></textarea></div>
+        <div class="field-group"><label class="field-label">Pull Quote</label><input type="text" class="field-input" id="about-quote" oninput="markDirty()"></div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">CTA Link Text</label><input type="text" class="field-input" id="about-cta-text" oninput="markDirty()" placeholder="Let's Work Together &rarr;"></div>
+          <div class="field-group"><label class="field-label">CTA Link Destination</label><input type="text" class="field-input" id="about-cta-href" oninput="markDirty()" placeholder="#contact"></div>
         </div>
+        <div class="section-divider"><div class="section-divider-title">Stat Tiles</div></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Tile 1 &mdash; Number</label><input type="text" class="field-input" id="stat1-num" oninput="markDirty()" placeholder="6+"></div><div class="field-group"><label class="field-label">Tile 1 &mdash; Label</label><input type="text" class="field-input" id="stat1-label" oninput="markDirty()" placeholder="Years Experience"></div></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Tile 2 &mdash; Number</label><input type="text" class="field-input" id="stat2-num" oninput="markDirty()" placeholder="BA"></div><div class="field-group"><label class="field-label">Tile 2 &mdash; Label</label><input type="text" class="field-input" id="stat2-label" oninput="markDirty()" placeholder="English, Wilfrid Laurier"></div></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Tile 3 &mdash; Number</label><input type="text" class="field-input" id="stat3-num" oninput="markDirty()" placeholder="5+"></div><div class="field-group"><label class="field-label">Tile 3 &mdash; Label</label><input type="text" class="field-input" id="stat3-label" oninput="markDirty()" placeholder="Services Offered"></div></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Tile 4 &mdash; Number</label><input type="text" class="field-input" id="stat4-num" oninput="markDirty()" placeholder="&infin;"></div><div class="field-group"><label class="field-label">Tile 4 &mdash; Label</label><input type="text" class="field-input" id="stat4-label" oninput="markDirty()" placeholder="Stories to Tell"></div></div>
       </div>
+
+      <div class="panel" id="panel-services">
+        <div class="panel-title">Services <em>Section</em></div>
+        <div class="panel-sub">Edit each service tab name and all service cards within it. Add or remove tabs and cards.</div>
+        <div class="field-group"><label class="field-label">Section Tag</label><input type="text" class="field-input" id="services-tag" oninput="markDirty()" placeholder="What I Offer"></div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Heading Line 1</label><input type="text" class="field-input" id="services-h1" oninput="markDirty()" placeholder="One studio."></div>
+          <div class="field-group"><label class="field-label">Heading Line 2 (italic gold)</label><input type="text" class="field-input" id="services-h2" oninput="markDirty()" placeholder="Every service."></div>
+        </div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">See Packages Link Text</label><input type="text" class="field-input" id="services-cta-text" oninput="markDirty()" placeholder="See Packages &rarr;"></div>
+          <div class="field-group"><label class="field-label">See Packages Link Destination</label><input type="text" class="field-input" id="services-cta-href" oninput="markDirty()" placeholder="#packages"></div>
+        </div>
+        <div class="section-divider">
+          <div class="section-divider-title">Service Tabs &amp; Cards</div>
+          <button class="add-item-btn" onclick="addServiceTab()">+ Add Tab</button>
+        </div>
+        <div id="service-tabs-editor"></div>
+      </div>
+
       <div class="panel" id="panel-packages">
-        <div class="panel-title">Packages & <em>Pricing</em></div>
-        <div class="panel-sub">Update your retainer package prices and features.</div>
-        <div class="section-title">Starter Package</div>
-        <div class="field-group">
-          <label class="field-label">Price</label>
-          <input type="text" class="field-input" id="starter-price" oninput="markDirty()">
+        <div class="panel-title">Packages &amp; <em>Pricing</em></div>
+        <div class="panel-sub">Edit every detail of your three retainer packages &mdash; prices, feature lists, and button text.</div>
+        <div class="field-group"><label class="field-label">Section Tag</label><input type="text" class="field-input" id="pkg-tag" oninput="markDirty()" placeholder="Retainer Packages"></div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Heading Line 1</label><input type="text" class="field-input" id="pkg-h1" oninput="markDirty()" placeholder="Simple,"></div>
+          <div class="field-group"><label class="field-label">Heading Line 2 (italic)</label><input type="text" class="field-input" id="pkg-h2" oninput="markDirty()" placeholder="transparent pricing"></div>
         </div>
-        <div class="section-title">Growth Package</div>
-        <div class="field-group">
-          <label class="field-label">Price</label>
-          <input type="text" class="field-input" id="growth-price" oninput="markDirty()">
-        </div>
-        <div class="section-title">Full Service Package</div>
-        <div class="field-group">
-          <label class="field-label">Price</label>
-          <input type="text" class="field-input" id="full-price" oninput="markDirty()">
-        </div>
+        <div class="field-group"><label class="field-label">Subtext / Note</label><textarea class="field-textarea" id="pkg-note" oninput="markDirty()"></textarea></div>
+        <div class="section-divider"><div class="section-divider-title">Starter Package</div></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Package Name</label><input type="text" class="field-input" id="pkg-starter-name" oninput="markDirty()" placeholder="Starter"></div><div class="field-group"><label class="field-label">Price</label><input type="text" class="field-input" id="pkg-starter-price" oninput="markDirty()" placeholder="$300"></div></div>
+        <div class="field-group"><label class="field-label">Per Month Label</label><input type="text" class="field-input" id="pkg-starter-per" oninput="markDirty()" placeholder="per month &mdash; starting at"></div>
+        <div class="field-group"><label class="field-label">Features</label><div class="features-wrap" id="starter-features"></div><button class="add-item-btn" onclick="addFeature('starter')">+ Add Feature</button></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Button Text</label><input type="text" class="field-input" id="pkg-starter-btn" oninput="markDirty()" placeholder="Get Started"></div><div class="field-group"><label class="field-label">Button Link</label><input type="text" class="field-input" id="pkg-starter-btn-href" oninput="markDirty()" placeholder="#contact"></div></div>
+        <div class="section-divider"><div class="section-divider-title">Growth Package <em>(Featured)</em></div></div>
+        <div class="field-group"><label class="field-label">Featured Crown Label</label><input type="text" class="field-input" id="pkg-growth-crown" oninput="markDirty()" placeholder="Most Popular"></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Package Name</label><input type="text" class="field-input" id="pkg-growth-name" oninput="markDirty()" placeholder="Growth"></div><div class="field-group"><label class="field-label">Price</label><input type="text" class="field-input" id="pkg-growth-price" oninput="markDirty()" placeholder="$500"></div></div>
+        <div class="field-group"><label class="field-label">Per Month Label</label><input type="text" class="field-input" id="pkg-growth-per" oninput="markDirty()" placeholder="per month &mdash; starting at"></div>
+        <div class="field-group"><label class="field-label">Features</label><div class="features-wrap" id="growth-features"></div><button class="add-item-btn" onclick="addFeature('growth')">+ Add Feature</button></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Button Text</label><input type="text" class="field-input" id="pkg-growth-btn" oninput="markDirty()" placeholder="Get Started"></div><div class="field-group"><label class="field-label">Button Link</label><input type="text" class="field-input" id="pkg-growth-btn-href" oninput="markDirty()" placeholder="#contact"></div></div>
+        <div class="section-divider"><div class="section-divider-title">Full Service Package</div></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Package Name</label><input type="text" class="field-input" id="pkg-full-name" oninput="markDirty()" placeholder="Full Service"></div><div class="field-group"><label class="field-label">Price</label><input type="text" class="field-input" id="pkg-full-price" oninput="markDirty()" placeholder="$700"></div></div>
+        <div class="field-group"><label class="field-label">Per Month Label</label><input type="text" class="field-input" id="pkg-full-per" oninput="markDirty()" placeholder="per month &mdash; starting at"></div>
+        <div class="field-group"><label class="field-label">Features</label><div class="features-wrap" id="full-features"></div><button class="add-item-btn" onclick="addFeature('full')">+ Add Feature</button></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Button Text</label><input type="text" class="field-input" id="pkg-full-btn" oninput="markDirty()" placeholder="Get Started"></div><div class="field-group"><label class="field-label">Button Link</label><input type="text" class="field-input" id="pkg-full-btn-href" oninput="markDirty()" placeholder="#contact"></div></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Custom Note Text</label><input type="text" class="field-input" id="pkg-custom-note" oninput="markDirty()" placeholder="Need something specific?"></div><div class="field-group"><label class="field-label">Custom Link Text</label><input type="text" class="field-input" id="pkg-custom-link-text" oninput="markDirty()" placeholder="Let's build a custom package &rarr;"></div></div>
+        <div class="field-group"><label class="field-label">Custom Link Destination</label><input type="text" class="field-input" id="pkg-custom-link-href" oninput="markDirty()" placeholder="#contact"></div>
       </div>
+
+      <div class="panel" id="panel-work">
+        <div class="panel-title">Portfolio / <em>Work</em></div>
+        <div class="panel-sub">Add, edit, or remove portfolio project cards shown on your site.</div>
+        <div class="field-group"><label class="field-label">Section Tag</label><input type="text" class="field-input" id="work-tag" oninput="markDirty()" placeholder="Selected Work"></div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Heading Line 1</label><input type="text" class="field-input" id="work-h1" oninput="markDirty()" placeholder="Recent"></div>
+          <div class="field-group"><label class="field-label">Heading Line 2 (italic gold)</label><input type="text" class="field-input" id="work-h2" oninput="markDirty()" placeholder="projects"></div>
+        </div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">CTA Link Text</label><input type="text" class="field-input" id="work-cta-text" oninput="markDirty()" placeholder="Start a Project &rarr;"></div>
+          <div class="field-group"><label class="field-label">CTA Link Destination</label><input type="text" class="field-input" id="work-cta-href" oninput="markDirty()" placeholder="#contact"></div>
+        </div>
+        <div class="section-divider">
+          <div class="section-divider-title">Project Cards</div>
+          <button class="add-item-btn" onclick="addWorkCard()">+ Add Project</button>
+        </div>
+        <div id="work-cards-list"></div>
+      </div>
+
+      <div class="panel" id="panel-process">
+        <div class="panel-title">Process <em>Steps</em></div>
+        <div class="panel-sub">The How It Works section. Edit each step name, number, and description.</div>
+        <div class="field-group"><label class="field-label">Section Tag</label><input type="text" class="field-input" id="process-tag" oninput="markDirty()" placeholder="How It Works"></div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Heading Line 1</label><input type="text" class="field-input" id="process-h1" oninput="markDirty()" placeholder="Simple"></div>
+          <div class="field-group"><label class="field-label">Heading Line 2 (italic gold)</label><input type="text" class="field-input" id="process-h2" oninput="markDirty()" placeholder="process,"></div>
+        </div>
+        <div class="field-group"><label class="field-label">Heading Line 3</label><input type="text" class="field-input" id="process-h3" oninput="markDirty()" placeholder="real results"></div>
+        <div class="section-divider">
+          <div class="section-divider-title">Steps</div>
+          <button class="add-item-btn" onclick="addProcessStep()">+ Add Step</button>
+        </div>
+        <div id="process-steps-list"></div>
+      </div>
+
       <div class="panel" id="panel-contact">
-        <div class="panel-title">Contact <em>Info</em></div>
-        <div class="panel-sub">How clients reach you.</div>
-        <div class="field-group">
-          <label class="field-label">Inquiry Email</label>
-          <input type="text" class="field-input" id="contact-email" oninput="markDirty()">
+        <div class="panel-title">Contact <em>Section</em></div>
+        <div class="panel-sub">The heading, intro text, and all contact detail links on the left side of the contact section.</div>
+        <div class="field-group"><label class="field-label">Section Tag</label><input type="text" class="field-input" id="contact-tag" oninput="markDirty()" placeholder="Work With Me"></div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Heading Line 1</label><input type="text" class="field-input" id="contact-h1" oninput="markDirty()" placeholder="Let's create something"></div>
+          <div class="field-group"><label class="field-label">Heading Line 2 (italic gold)</label><input type="text" class="field-input" id="contact-h2" oninput="markDirty()" placeholder="worth remembering."></div>
         </div>
-        <div class="field-group">
-          <label class="field-label">Instagram Handle</label>
-          <input type="text" class="field-input" id="contact-instagram" oninput="markDirty()">
-        </div>
-        <div class="field-group">
-          <label class="field-label">LinkedIn URL</label>
-          <input type="text" class="field-input" id="contact-linkedin" oninput="markDirty()">
-        </div>
-        <div class="field-group">
-          <label class="field-label">Calendly Link</label>
-          <input type="text" class="field-input" id="contact-calendly" oninput="markDirty()">
-        </div>
+        <div class="field-group"><label class="field-label">Intro Text</label><textarea class="field-textarea" id="contact-intro" oninput="markDirty()"></textarea></div>
+        <div class="section-divider"><div class="section-divider-title">Contact Links</div></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Inquiries Label</label><input type="text" class="field-input" id="contact-inquiries-label" oninput="markDirty()" placeholder="Inquiries"></div><div class="field-group"><label class="field-label">Inquiries Email</label><input type="text" class="field-input" id="contact-inquiries-email" oninput="markDirty()" placeholder="hello@elbcreative.co"></div></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Direct Label</label><input type="text" class="field-input" id="contact-direct-label" oninput="markDirty()" placeholder="Direct"></div><div class="field-group"><label class="field-label">Direct Email</label><input type="text" class="field-input" id="contact-direct-email" oninput="markDirty()" placeholder="anna@elbcreative.co"></div></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">LinkedIn Label</label><input type="text" class="field-input" id="contact-linkedin-label" oninput="markDirty()" placeholder="LinkedIn"></div><div class="field-group"><label class="field-label">LinkedIn Display Name</label><input type="text" class="field-input" id="contact-linkedin-name" oninput="markDirty()" placeholder="Rayyan El-Baf"></div></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Instagram Label</label><input type="text" class="field-input" id="contact-instagram-label" oninput="markDirty()" placeholder="Instagram"></div><div class="field-group"><label class="field-label">Instagram Handle Display</label><input type="text" class="field-input" id="contact-instagram-handle" oninput="markDirty()" placeholder="@rayyanelbaf"></div></div>
       </div>
-      <div class="panel" id="panel-branding">
-        <div class="panel-title">Colors & <em>Branding</em></div>
-        <div class="panel-sub">Your brand color palette.</div>
-        <div class="color-row">
-          <div class="color-group">
-            <label class="field-label">Primary Color</label>
-            <input type="color" class="color-input" id="color-primary" oninput="markDirty()">
-          </div>
-          <div class="color-group">
-            <label class="field-label">Background Color</label>
-            <input type="color" class="color-input" id="color-secondary" oninput="markDirty()">
-          </div>
-          <div class="color-group">
-            <label class="field-label">Accent / Gold</label>
-            <input type="color" class="color-input" id="color-accent" oninput="markDirty()">
-          </div>
+
+      <div class="panel" id="panel-footer">
+        <div class="panel-title">Footer</div>
+        <div class="panel-sub">Logo, copyright text, and footer navigation links.</div>
+        <div class="field-row">
+          <div class="field-group"><label class="field-label">Logo &mdash; Plain Text</label><input type="text" class="field-input" id="footer-logo-plain" oninput="markDirty()" placeholder="ELB"></div>
+          <div class="field-group"><label class="field-label">Logo &mdash; Italic Gold Text</label><input type="text" class="field-input" id="footer-logo-italic" oninput="markDirty()" placeholder="Creative"></div>
         </div>
+        <div class="field-group"><label class="field-label">Copyright Text</label><input type="text" class="field-input" id="footer-copyright" oninput="markDirty()" placeholder="&copy; 2025 ELB Creative &middot; Anna El-Baf &middot; Ontario &amp; Atlanta"></div>
+        <div class="section-divider"><div class="section-divider-title">Footer Links</div></div>
+        <div id="footer-links-list"></div>
+        <button class="add-item-btn" onclick="addFooterLink()">+ Add Link</button>
       </div>
+
       <div class="panel" id="panel-social">
-        <div class="panel-title">Social <em>Links</em></div>
-        <div class="panel-sub">Your social media and business links.</div>
-        <div class="field-group">
-          <label class="field-label">Instagram URL</label>
-          <input type="text" class="field-input" id="social-instagram" oninput="markDirty()">
-        </div>
-        <div class="field-group">
-          <label class="field-label">LinkedIn URL</label>
-          <input type="text" class="field-input" id="social-linkedin" oninput="markDirty()">
-        </div>
-        <div class="field-group">
-          <label class="field-label">CTA Button Text</label>
-          <input type="text" class="field-input" id="social-cta" oninput="markDirty()">
-        </div>
+        <div class="panel-title">Social &amp; <em>Links</em></div>
+        <div class="panel-sub">Social media URLs used throughout the site in buttons and links.</div>
+        <div class="field-group"><label class="field-label">Instagram URL</label><input type="text" class="field-input" id="social-instagram" oninput="markDirty()" placeholder="https://instagram.com/rayyanelbaf"></div>
+        <div class="field-group"><label class="field-label">LinkedIn URL</label><input type="text" class="field-input" id="social-linkedin" oninput="markDirty()" placeholder="https://linkedin.com/in/rayyanel-baf"></div>
+        <div class="field-group"><label class="field-label">Beacons.ai URL</label><input type="text" class="field-input" id="social-beacons" oninput="markDirty()" placeholder="https://beacons.ai/rayyanelbaf"></div>
+        <div class="field-group"><label class="field-label">Calendly Booking Link (optional)</label><input type="text" class="field-input" id="social-calendly" oninput="markDirty()"></div>
       </div>
-    </div>
-  </div>
-</div>
+
+      <div class="panel" id="panel-form">
+        <div class="panel-title">Contact <em>Form</em></div>
+        <div class="panel-sub">Edit form labels, dropdown options, button text, and the Formspree endpoint where messages are sent.</div>
+        <div class="field-group"><label class="field-label">Formspree Endpoint</label><input type="text" class="field-input" id="form-formspree" oninput="markDirty()" placeholder="https://formspree.io/f/xojbodnp"></div>
+        <div class="field-group"><label class="field-label">Submit Button Text</label><input type="text" class="field-input" id="form-submit-text" oninput="markDirty()" placeholder="Send Message"></div>
+        <div class="field-group"><label class="field-label">Success Message (after submission)</label><input type="text" class="field-input" id="form-success-msg" oninput="markDirty()" placeholder="&#10003; Message sent. I'll be in touch within 24 hours."></div>
+        <div class="field-group"><label class="field-label">Error Message (if submission fails)</label><input type="text" class="field-input" id="form-error-msg" oninput="markDirty()" placeholder="Something went wrong. Please email hello@elbcreative.co directly."></div>
+        <div class="section-divider"><div class="section-divider-title">Field Labels</div></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Name Field Label</label><input type="text" class="field-input" id="form-label-name" oninput="markDirty()" placeholder="Your Name *"></div><div class="field-group"><label class="field-label">Email Field Label</label><input type="text" class="field-input" id="form-label-email" oninput="markDirty()" placeholder="Email Address *"></div></div>
+        <div class="field-row"><div class="field-group"><label class="field-label">Business Field Label</label><input type="text" class="field-input" id="form-label-business" oninput="markDirty()" placeholder="Business / Brand Name"></div><div class="field-group"><label class="field-label">Message Field Label</label><input type="text" class="field-input" id="form-label-message" oninput="markDirty()" placeholder="Tell Me About Your Project *"></div></div>
+        <div class="section-divider"><div class="section-divider-title">&ldquo;I'm Interested In&rdquo; Dropdown Options</div></div>
+        <div id="form-interest-options"></div>
+        <button class="add-item-btn" onclick="addFormOption('interest')">+ Add Option</button>
+        <div class="section-divider"><div class="section-divider-title">&ldquo;Which Service?&rdquo; Dropdown Options</div></div>
+        <div id="form-service-options"></div>
+        <button class="add-item-btn" onclick="addFormOption('service')">+ Add Option</button>
+      </div>
+
+      <div class="panel" id="panel-settings">
+        <div class="panel-title">Admin <em>Settings</em></div>
+        <div class="panel-sub">Change your admin login password. Leave blank to keep the current password.</div>
+        <div class="field-group"><label class="field-label">New Password</label><input type="password" class="field-input" id="new-password" placeholder="Enter new password"></div>
+        <div class="field-group"><label class="field-label">Confirm New Password</label><input type="password" class="field-input" id="confirm-password" placeholder="Confirm new password"></div>
+        <button class="add-item-btn" onclick="changePassword()">Update Password</button>
+        <div class="password-msg" id="password-msg"></div>
+      </div>
+
+    </div><!-- end admin-content -->
+  </div><!-- end admin-body -->
+</div><!-- end admin-wrap -->
+
 <div class="save-bar" id="save-bar">
-  <div class="save-msg">You have unsaved changes</div>
-  <div style="display:flex;align-items:center;gap:16px">
-    <span class="save-success" id="save-success">✓ Saved successfully</span>
-    <button class="save-btn" onclick="saveContent()">Save Changes</button>
+  <div class="save-bar-msg">You have unsaved changes</div>
+  <div class="save-bar-right">
+    <span class="save-success-msg" id="save-success-msg">&#10003; Saved &mdash; site will update shortly</span>
+    <button class="save-btn" onclick="saveAll()">Save Changes</button>
   </div>
 </div>
+
 <script>
 let token = sessionStorage.getItem('elb_admin_token');
 let dirty = false;
-let currentData = {};
-if (token) showDashboard();
+let D = {};
+
+const DEFAULTS = {
+  content: {
+    seo: { title: 'ELB Creative — Anna El-Baf', description: 'Full-service creative studio — copywriting, social media, photography, web design & more. Ontario & Atlanta.', ogTitle: 'ELB Creative', ogDescription: 'Full-service creative studio — copywriting, social media, photography, web design & more.', ga: '' },
+    notification: { before: 'Now accepting new clients —', highlight: 'Ontario & Atlanta', ctaText: 'Book a free discovery call →', ctaLink: '#contact' },
+    nav: { logoPlain: 'ELB', logoItalic: 'Creative', links: [{text:'About',href:'#about'},{text:'Work',href:'#work'},{text:'Packages',href:'#packages'}], ctaText: 'Work With Me', ctaHref: '#contact' },
+    hero: { eyebrow: 'Full-Service Creative Studio', headline: 'Your story,', subtitle: 'told beautifully.', description: 'ELB Creative is a full-service creative studio offering copywriting, content strategy, social media, photography, web design, and more. One studio, everything your brand needs.', location1: 'Ontario, Canada', location2: 'Atlanta, Georgia', btnPrimary: 'View Packages', btnPrimaryHref: '#packages', btnSecondary: 'Explore Services', btnSecondaryHref: '#services', monogram: 'A', badgeLabel: 'Creative Studio', badgeValue: 'ELB Creative' },
+    strip: { separator: '✦', items: ['Copywriting','Photography','Web Design','Social Media','Brand Voice','SEO Content','Email Campaigns','Virtual Assistant','Content Strategy','Lifestyle Content'] },
+    about: { tag: 'About Anna', h1: 'Creative mind.', h2: 'Strategic voice.', text: "I'm Anna — a writer, content strategist, and creative professional with a background in English literature, lifestyle media, and real estate marketing. I started ELB Creative to offer brands a single trusted studio for all their creative needs.", quote: '“Great creative work doesn’t just look good — it makes people feel something.”', ctaText: "Let’s Work Together →", ctaHref: '#contact', stats: [{num:'6+',label:'Years Experience'},{num:'BA',label:'English, Wilfrid Laurier'},{num:'5+',label:'Services Offered'},{num:'∞',label:'Stories to Tell'}] },
+    services: { tag: 'What I Offer', h1: 'One studio.', h2: 'Every service.', ctaText: 'See Packages →', ctaHref: '#packages', tabs: [
+      { name: 'Copywriting & Content', cards: [
+        {num:'01',name:'Website & Landing Page Copy',desc:'Clear, conversion-focused copy that tells your brand story and turns visitors into clients.',bullets:['Homepage & about page','Services & product pages','Landing pages','CTAs & taglines']},
+        {num:'02',name:'Real Estate Copy',desc:'Listings, agent bios, and marketing copy that sells the property and the person behind it.',bullets:['Property listings','Agent bios & profiles','Email campaigns','Marketing materials']},
+        {num:'03',name:'Email & Newsletter Copy',desc:'Sequences, campaigns, and newsletters that keep your audience engaged and moving.',bullets:['Welcome sequences','Promotional campaigns','Monthly newsletters','Drip sequences']},
+        {num:'04',name:'SEO & Brand Voice',desc:'Content that ranks and sounds unmistakably like you.',bullets:['SEO blog content','Brand voice guides','Product descriptions','Content audits']},
+        {num:'05',name:'Editorial & Published Writing',desc:'Feature articles, thought leadership, and editorial content with real publication experience.',bullets:['Magazine articles','Thought leadership','Guest posts','Press releases']},
+        {num:'06',name:'Ad & Marketing Copy',desc:'Short-form copy that stops the scroll.',bullets:['Social ad copy','Google ad copy','Print materials','Taglines & slogans']}
+      ]},
+      { name: 'Social & Strategy', cards: [
+        {num:'01',name:'Social Media Content Creation',desc:'Consistent, on-brand content that keeps your audience engaged.',bullets:['Caption writing','Post ideation','Content calendars','Story scripts']},
+        {num:'02',name:'Content Strategy & Growth',desc:'A clear plan for what to post, when, and why.',bullets:['Platform strategy','Growth planning','Competitor analysis','Audience research']},
+        {num:'03',name:'Lifestyle Content',desc:'Fashion, wellness, and culture content that feels personal.',bullets:['Fashion & style content','Wellness narratives','Culture & lifestyle','Personal brand content']},
+        {num:'04',name:'Performance Monitoring',desc:"Regular reviews of what's working, what's not, and what to do next.",bullets:['Monthly recaps','Analytics review','Strategy adjustments','Growth reporting']}
+      ]},
+      { name: 'Visual & Photography', cards: [
+        {num:'01',name:'Brand & Lifestyle Photography',desc:'Clean, intentional photography that tells your brand story.',bullets:['Brand shoots','Product photography','Lifestyle imagery','Social content assets','Photo editing & retouching']},
+        {num:'02',name:'Graphic Design',desc:'Visual assets that match your brand aesthetic.',bullets:['Social media graphics','Brand assets','Marketing materials','Canva templates','Event graphics']}
+      ]},
+      { name: 'Web & Design', cards: [
+        {num:'01',name:'Website Design & Build',desc:'Clean, functional websites that look as good as your brand deserves.',bullets:['Full website design','WordPress sites','Landing pages','SEO setup','Mobile optimization']},
+        {num:'02',name:'Website Copy & Content',desc:'Every word on your site — written to reflect your brand.',bullets:['Full site copywriting','Content updates','SEO optimization','Blog setup & content','Ongoing maintenance']}
+      ]},
+      { name: 'VA & Support', cards: [
+        {num:'01',name:'Virtual Assistant',desc:"Behind-the-scenes support so you can focus on running your business.",bullets:['Email management','Calendar scheduling','Research & data entry','Client communication','Document preparation']},
+        {num:'02',name:'Administrative Support',desc:'Organized, reliable support for the operational side of your business.',bullets:['Project coordination','File organization','Reporting','Process documentation','Inbox management']}
+      ]},
+      { name: 'Custom', cards: [
+        {num:'Custom',name:'Build Your Own Package',desc:"Not sure what you need? That's okay. I'll build a package around yours.",bullets:['Mix any services across all categories','Project-based or monthly retainer','Tailored to your budget and timeline','Free 30-minute discovery call to start']}
+      ]}
+    ]},
+    packages: { tag: 'Retainer Packages', h1: 'Simple,', h2: 'transparent pricing',
+      note: 'Monthly retainers you can mix across any service category. All packages include a free 30-minute discovery call.
+Pricing shown is a starting point — final pricing is tailored per client and scope.',
+      customNote: 'Need something specific?', customLinkText: "Let’s build a custom package →", customLinkHref: '#contact',
+      starter: { name: 'Starter', price: '$300', per: 'per month — starting at', btn: 'Get Started', btnHref: '#contact', features: ['Choose 1–2 services','4 deliverables per month','2 rounds of revisions','Monthly check-in call','Email support'] },
+      growth:  { name: 'Growth',  price: '$500', per: 'per month — starting at', crown: 'Most Popular', btn: 'Get Started', btnHref: '#contact', features: ['Choose 2–3 services','8–10 deliverables per month','Unlimited revisions','Bi-weekly strategy calls','Priority email support','Monthly performance recap'] },
+      full:    { name: 'Full Service', price: '$700', per: 'per month — starting at', btn: 'Get Started', btnHref: '#contact', features: ['Full studio access','All services available','Unlimited deliverables','Weekly strategy calls','Priority turnaround','Dedicated support'] }
+    },
+    work: { tag: 'Selected Work', h1: 'Recent', h2: 'projects', ctaText: 'Start a Project →', ctaHref: '#contact', cards: [
+      {tag:'Before / After',type:'Real Estate · Copywriting',title:'Century 21 Heritage House',desc:'Rewrote agent bios and property listings to lead with personality and results.',linkText:'View Case Study →',linkHref:'#'},
+      {tag:'Before / After',type:'Ecommerce · Product Copy',title:'Indie Skincare Brand',desc:'Transformed generic product descriptions into sensory, story-driven copy.',linkText:'View Case Study →',linkHref:'#'},
+      {tag:'Email Sequence',type:'Email · Welcome Sequence',title:'Local Wellness Brand',desc:'3-email welcome sequence to onboard subscribers and drive first purchase.',linkText:'View Case Study →',linkHref:'#'},
+      {tag:'Before / After',type:'Social Media · Captions',title:'Local Restaurant',desc:'Before/after caption rewrites — from generic to scroll-stopping.',linkText:'View Case Study →',linkHref:'#'},
+      {tag:'Published',type:'Editorial · Article',title:'INBETWEEN Magazine',desc:'Published editorial content covering lifestyle, culture, and fashion.',linkText:'View Article →',linkHref:'#'},
+      {tag:'Before / After',type:'Website · About Page',title:'Small Business Rewrite',desc:'Rewrote a bland about page to lead with benefit and end with a compelling CTA.',linkText:'View Case Study →',linkHref:'#'}
+    ]},
+    process: { tag: 'How It Works', h1: 'Simple', h2: 'process,', h3: 'real results', steps: [
+      {num:'1',name:'Discovery',desc:'Free 30-minute call. We talk through your brand, goals, and what you need.'},
+      {num:'2',name:'Strategy',desc:'I research your brand and build a plan tailored to your specific needs.'},
+      {num:'3',name:'Creation',desc:"Work delivered within agreed timelines. We refine together until it's right."},
+      {num:'4',name:'Delivery',desc:'Final files delivered. Retainer clients get ongoing support and check-ins.'}
+    ]},
+    contact: { tag: 'Work With Me', h1: "Let's create something", h2: 'worth remembering.', intro: "Whether you need a full retainer, a one-time project, or you're not sure where to start — I'd love to hear what you're working on.", inquiriesLabel: 'Inquiries', inquiriesEmail: 'hello@elbcreative.co', directLabel: 'Direct', directEmail: 'anna@elbcreative.co', linkedinLabel: 'LinkedIn', linkedinName: 'Rayyan El-Baf', instagramLabel: 'Instagram', instagramHandle: '@rayyanelbaf' },
+    footer: { logoPlain: 'ELB', logoItalic: 'Creative', copyright: '© 2025 ELB Creative · Anna El-Baf · Ontario & Atlanta', links: [{text:'About',href:'#about'},{text:'Services',href:'#services'},{text:'Work',href:'#work'},{text:'Contact',href:'#contact'}] },
+    form: { formspree: 'https://formspree.io/f/xojbodnp', submitText: 'Send Message', successMsg: "✓ Message sent. I'll be in touch within 24 hours.", errorMsg: 'Something went wrong. Please email hello@elbcreative.co directly.', labelName: 'Your Name *', labelEmail: 'Email Address *', labelBusiness: 'Business / Brand Name', labelMessage: 'Tell Me About Your Project *',
+      interestOptions: [{val:'discovery',text:'Discovery Call First'},{val:'one-time',text:'One-Time Project'},{val:'starter',text:'Starter Package — from $300/mo'},{val:'growth',text:'Growth Package — from $500/mo'},{val:'full',text:'Full Service — from $700/mo'},{val:'custom',text:'Custom Package'}],
+      serviceOptions: [{val:'copywriting',text:'Copywriting & Content Writing'},{val:'social',text:'Social Media & Content Strategy'},{val:'photography',text:'Photography'},{val:'web',text:'Web Design & Development'},{val:'va',text:'Virtual Assistant & Admin'},{val:'multiple',text:'Multiple Services / Not Sure Yet'}]
+    },
+    visibility: { notification: true, serviceNav: true, strip: true, about: true, services: true, packages: true, work: true, process: true }
+  },
+  settings: {
+    colors: { espresso: '#1a0e06', ivory: '#faf8f4', gold: '#b8965a', goldLight: '#d4b07a', stone: '#e8e2d8', linen: '#f0ebe3', warmGray: '#8c7b6b', brown: '#3d2410' },
+    fonts: { heading: 'Playfair Display', body: 'Tenor Sans' },
+    social: { instagram: 'https://instagram.com/rayyanelbaf', linkedin: 'https://linkedin.com/in/rayyanel-baf', beacons: '', calendly: '' }
+  }
+};
+
+if (token) initDashboard();
+
 async function login() {
   const pw = document.getElementById('password-input').value;
-  const res = await fetch('/api', { method: 'GET', headers: { 'Authorization': 'Bearer ' + pw } });
-  if (res.ok) {
-    token = pw;
-    sessionStorage.setItem('elb_admin_token', pw);
-    const data = await res.json();
-    currentData = data;
-    populateFields(data);
-    showDashboard();
-  } else {
+  try {
+    const res = await fetch('/api', { method: 'GET', headers: { 'Authorization': 'Bearer ' + pw } });
+    if (res.ok) {
+      token = pw;
+      sessionStorage.setItem('elb_admin_token', pw);
+      D = await res.json();
+      showDashboard();
+      populateAll();
+    } else {
+      document.getElementById('login-error').style.display = 'block';
+    }
+  } catch(e) {
+    document.getElementById('login-error').textContent = 'Connection error. Try again.';
     document.getElementById('login-error').style.display = 'block';
   }
 }
+
 function logout() {
   sessionStorage.removeItem('elb_admin_token');
   token = null;
   document.getElementById('admin-wrap').style.display = 'none';
   document.getElementById('login-wrap').style.display = 'flex';
 }
+
+async function initDashboard() {
+  try {
+    const res = await fetch('/api', { headers: { 'Authorization': 'Bearer ' + token } });
+    if (res.ok) { D = await res.json(); showDashboard(); populateAll(); }
+    else { sessionStorage.removeItem('elb_admin_token'); token = null; }
+  } catch(e) { sessionStorage.removeItem('elb_admin_token'); token = null; }
+}
+
 function showDashboard() {
   document.getElementById('login-wrap').style.display = 'none';
   document.getElementById('admin-wrap').style.display = 'block';
-  if (token && !currentData.content) loadContent();
 }
-async function loadContent() {
-  const res = await fetch('/api', { headers: { 'Authorization': 'Bearer ' + token } });
-  if (res.ok) { const data = await res.json(); currentData = data; populateFields(data); }
+
+function c() { return (D.content && Object.keys(D.content).length > 0) ? D.content : DEFAULTS.content; }
+function s() { return (D.settings && Object.keys(D.settings).length > 0) ? D.settings : DEFAULTS.settings; }
+function g(id) { const el = document.getElementById(id); return el ? el.value : ''; }
+function sv(id, val) { const el = document.getElementById(id); if (el && val !== undefined && val !== null) el.value = val; }
+
+function populateAll() {
+  const cd = c(); const sd = s();
+  sv('seo-title', cd.seo?.title); sv('seo-description', cd.seo?.description);
+  sv('og-title', cd.seo?.ogTitle); sv('og-description', cd.seo?.ogDescription); sv('ga-id', cd.seo?.ga);
+  const cols = sd.colors || DEFAULTS.settings.colors;
+  sv('color-espresso', cols.espresso); sv('color-espresso-hex', cols.espresso);
+  sv('color-ivory', cols.ivory); sv('color-ivory-hex', cols.ivory);
+  sv('color-gold', cols.gold); sv('color-gold-hex', cols.gold);
+  sv('color-gold-light', cols.goldLight); sv('color-gold-light-hex', cols.goldLight);
+  sv('color-stone', cols.stone); sv('color-stone-hex', cols.stone);
+  sv('color-linen', cols.linen); sv('color-linen-hex', cols.linen);
+  sv('color-warm-gray', cols.warmGray); sv('color-warm-gray-hex', cols.warmGray);
+  sv('color-brown', cols.brown); sv('color-brown-hex', cols.brown);
+  sv('font-heading', sd.fonts?.heading); sv('font-body', sd.fonts?.body);
+  const vis = cd.visibility || DEFAULTS.content.visibility;
+  Object.entries(vis).forEach(([k,v]) => { const el = document.getElementById('show-'+k); if (el) el.checked = !!v; });
+  const n = cd.notification || DEFAULTS.content.notification;
+  sv('notify-before', n.before); sv('notify-highlight', n.highlight); sv('notify-cta-text', n.ctaText); sv('notify-cta-link', n.ctaLink);
+  const nav = cd.nav || DEFAULTS.content.nav;
+  sv('nav-logo-plain', nav.logoPlain); sv('nav-logo-italic', nav.logoItalic); sv('nav-cta-text', nav.ctaText); sv('nav-cta-href', nav.ctaHref);
+  (nav.links||[]).forEach((lnk,i) => { sv('navlink-'+(i+1)+'-text', lnk.text); sv('navlink-'+(i+1)+'-href', lnk.href); });
+  const h = cd.hero || DEFAULTS.content.hero;
+  sv('hero-eyebrow',h.eyebrow); sv('hero-headline',h.headline); sv('hero-subtitle',h.subtitle); sv('hero-description',h.description);
+  sv('hero-location1',h.location1); sv('hero-location2',h.location2);
+  sv('hero-btn-primary',h.btnPrimary); sv('hero-btn-primary-href',h.btnPrimaryHref);
+  sv('hero-btn-secondary',h.btnSecondary); sv('hero-btn-secondary-href',h.btnSecondaryHref);
+  sv('hero-monogram',h.monogram); sv('hero-badge-label',h.badgeLabel); sv('hero-badge-value',h.badgeValue);
+  const st = cd.strip || DEFAULTS.content.strip;
+  sv('strip-separator', st.separator); renderStripItems(st.items||[]);
+  const ab = cd.about || DEFAULTS.content.about;
+  sv('about-tag',ab.tag); sv('about-h1',ab.h1); sv('about-h2',ab.h2); sv('about-text',ab.text); sv('about-quote',ab.quote);
+  sv('about-cta-text',ab.ctaText); sv('about-cta-href',ab.ctaHref);
+  (ab.stats||[]).forEach((st,i) => { sv('stat'+(i+1)+'-num',st.num); sv('stat'+(i+1)+'-label',st.label); });
+  const srv = cd.services || DEFAULTS.content.services;
+  sv('services-tag',srv.tag); sv('services-h1',srv.h1); sv('services-h2',srv.h2); sv('services-cta-text',srv.ctaText); sv('services-cta-href',srv.ctaHref);
+  renderServiceTabs(srv.tabs||[]);
+  const pkg = cd.packages || DEFAULTS.content.packages;
+  sv('pkg-tag',pkg.tag); sv('pkg-h1',pkg.h1); sv('pkg-h2',pkg.h2); sv('pkg-note',pkg.note);
+  sv('pkg-custom-note',pkg.customNote); sv('pkg-custom-link-text',pkg.customLinkText); sv('pkg-custom-link-href',pkg.customLinkHref);
+  ['starter','growth','full'].forEach(k => {
+    const p = pkg[k] || DEFAULTS.content.packages[k];
+    sv('pkg-'+k+'-name',p.name); sv('pkg-'+k+'-price',p.price); sv('pkg-'+k+'-per',p.per);
+    sv('pkg-'+k+'-btn',p.btn); sv('pkg-'+k+'-btn-href',p.btnHref);
+    if (k==='growth') sv('pkg-growth-crown',p.crown);
+    renderFeatures(k, p.features||[]);
+  });
+  const wk = cd.work || DEFAULTS.content.work;
+  sv('work-tag',wk.tag); sv('work-h1',wk.h1); sv('work-h2',wk.h2); sv('work-cta-text',wk.ctaText); sv('work-cta-href',wk.ctaHref);
+  renderWorkCards(wk.cards||[]);
+  const pr = cd.process || DEFAULTS.content.process;
+  sv('process-tag',pr.tag); sv('process-h1',pr.h1); sv('process-h2',pr.h2); sv('process-h3',pr.h3);
+  renderProcessSteps(pr.steps||[]);
+  const ct = cd.contact || DEFAULTS.content.contact;
+  sv('contact-tag',ct.tag); sv('contact-h1',ct.h1); sv('contact-h2',ct.h2); sv('contact-intro',ct.intro);
+  sv('contact-inquiries-label',ct.inquiriesLabel); sv('contact-inquiries-email',ct.inquiriesEmail);
+  sv('contact-direct-label',ct.directLabel); sv('contact-direct-email',ct.directEmail);
+  sv('contact-linkedin-label',ct.linkedinLabel); sv('contact-linkedin-name',ct.linkedinName);
+  sv('contact-instagram-label',ct.instagramLabel); sv('contact-instagram-handle',ct.instagramHandle);
+  const ft = cd.footer || DEFAULTS.content.footer;
+  sv('footer-logo-plain',ft.logoPlain); sv('footer-logo-italic',ft.logoItalic); sv('footer-copyright',ft.copyright);
+  renderFooterLinks(ft.links||[]);
+  const so = sd.social || DEFAULTS.settings.social;
+  sv('social-instagram',so.instagram); sv('social-linkedin',so.linkedin); sv('social-beacons',so.beacons); sv('social-calendly',so.calendly);
+  const fm = cd.form || DEFAULTS.content.form;
+  sv('form-formspree',fm.formspree); sv('form-submit-text',fm.submitText); sv('form-success-msg',fm.successMsg); sv('form-error-msg',fm.errorMsg);
+  sv('form-label-name',fm.labelName); sv('form-label-email',fm.labelEmail); sv('form-label-business',fm.labelBusiness); sv('form-label-message',fm.labelMessage);
+  renderFormOptions('interest', fm.interestOptions||[]);
+  renderFormOptions('service', fm.serviceOptions||[]);
 }
-function populateFields(data) {
-  const c = data.content || {};
-  const s = data.settings || {};
-  setValue('notification', c.notification);
-  setValue('hero-headline', c.hero?.headline);
-  setValue('hero-subtitle', c.hero?.subtitle);
-  setValue('hero-description', c.hero?.description);
-  setValue('hero-location1', c.hero?.location1);
-  setValue('hero-location2', c.hero?.location2);
-  setValue('about-text', c.about?.text);
-  setValue('about-quote', c.about?.quote);
-  setValue('starter-price', c.packages?.starter?.price);
-  setValue('growth-price', c.packages?.growth?.price);
-  setValue('full-price', c.packages?.full?.price);
-  setValue('contact-email', c.contact?.email);
-  setValue('contact-instagram', c.contact?.instagram);
-  setValue('contact-linkedin', c.contact?.linkedin);
-  setValue('contact-calendly', s.calendlyLink);
-  setValue('color-primary', s.primaryColor || '#1a0e06');
-  setValue('color-secondary', s.secondaryColor || '#faf8f4');
-  setValue('color-accent', s.accentColor || '#b8965a');
-  setValue('social-instagram', s.instagramUrl);
-  setValue('social-linkedin', s.linkedinUrl);
-  setValue('social-cta', s.ctaText);
+
+function escHtml(str) { if(!str)return''; return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
+function renderStripItems(items) {
+  const wrap = document.getElementById('strip-items'); wrap.innerHTML = '';
+  items.forEach(item => { const row = document.createElement('div'); row.className = 'strip-item-row'; row.innerHTML = `<input type="text" class="field-input" value="${escHtml(item)}" oninput="markDirty()"><button class="feature-remove" onclick="this.parentElement.remove();markDirty()">&#215;</button>`; wrap.appendChild(row); });
 }
-function setValue(id, val) {
-  const el = document.getElementById(id);
-  if (el && val !== undefined && val !== null) el.value = val;
+function addStripItem() { const wrap = document.getElementById('strip-items'); const row = document.createElement('div'); row.className = 'strip-item-row'; row.innerHTML = `<input type="text" class="field-input" placeholder="New item" oninput="markDirty()"><button class="feature-remove" onclick="this.parentElement.remove();markDirty()">&#215;</button>`; wrap.appendChild(row); markDirty(); }
+
+function renderServiceTabs(tabs) {
+  const wrap = document.getElementById('service-tabs-editor'); wrap.innerHTML = '';
+  tabs.forEach((tab, ti) => {
+    const div = document.createElement('div'); div.className = 'dropdown-section';
+    div.innerHTML = `<div class="dropdown-section-header"><span class="dropdown-section-title">Tab ${ti+1}</span><button class="remove-btn" onclick="this.closest('.dropdown-section').remove();markDirty()">Remove Tab</button></div><div class="field-group" style="margin-bottom:12px"><label class="field-label">Tab Name</label><input type="text" class="field-input" value="${escHtml(tab.name)}" oninput="markDirty()"></div><div class="service-cards-list">${(tab.cards||[]).map((card,ci)=>renderServiceCardHTML(card,ci)).join('')}</div><button class="add-item-btn" onclick="addServiceCard(this)">+ Add Service Card</button>`;
+    wrap.appendChild(div);
+  });
 }
-function collectData() {
+function renderServiceCardHTML(card, ci) {
+  const bullets = (card.bullets||[]).map(b => `<div class="feature-row"><input type="text" class="field-input" value="${escHtml(b)}" oninput="markDirty()"><button class="feature-remove" onclick="this.parentElement.remove();markDirty()">&#215;</button></div>`).join('');
+  return `<div class="card-item" style="margin-bottom:10px"><div class="card-item-header"><span class="card-item-label">Card ${ci+1}</span><button class="remove-btn" onclick="this.closest('.card-item').remove();markDirty()">Remove</button></div><div class="field-row"><div class="field-group"><label class="field-label">Number</label><input type="text" class="field-input" value="${escHtml(card.num)}" oninput="markDirty()" placeholder="01"></div><div class="field-group"><label class="field-label">Service Name</label><input type="text" class="field-input" value="${escHtml(card.name)}" oninput="markDirty()"></div></div><div class="field-group"><label class="field-label">Description</label><textarea class="field-textarea" oninput="markDirty()">${escHtml(card.desc)}</textarea></div><div class="field-group"><label class="field-label">Bullet Points</label><div class="features-wrap">${bullets}</div><button class="add-item-btn" onclick="addBullet(this)">+ Add Bullet</button></div></div>`;
+}
+function addServiceTab() { const wrap = document.getElementById('service-tabs-editor'); const ti = wrap.children.length; const div = document.createElement('div'); div.className = 'dropdown-section'; div.innerHTML = `<div class="dropdown-section-header"><span class="dropdown-section-title">Tab ${ti+1}</span><button class="remove-btn" onclick="this.closest('.dropdown-section').remove();markDirty()">Remove Tab</button></div><div class="field-group" style="margin-bottom:12px"><label class="field-label">Tab Name</label><input type="text" class="field-input" oninput="markDirty()" placeholder="New Tab"></div><div class="service-cards-list"></div><button class="add-item-btn" onclick="addServiceCard(this)">+ Add Service Card</button>`; wrap.appendChild(div); markDirty(); }
+function addServiceCard(btn) { const list = btn.previousElementSibling; const ci = list.children.length; const tmp = document.createElement('div'); tmp.innerHTML = renderServiceCardHTML({num:'',name:'',desc:'',bullets:[]}, ci); list.appendChild(tmp.firstElementChild); markDirty(); }
+function addBullet(btn) { const wrap = btn.previousElementSibling; const row = document.createElement('div'); row.className = 'feature-row'; row.innerHTML = `<input type="text" class="field-input" placeholder="Bullet point" oninput="markDirty()"><button class="feature-remove" onclick="this.parentElement.remove();markDirty()">&#215;</button>`; wrap.appendChild(row); markDirty(); }
+
+function renderFeatures(pkg, features) { const wrap = document.getElementById(pkg+'-features'); if(!wrap)return; wrap.innerHTML = ''; features.forEach(f => { const row = document.createElement('div'); row.className = 'feature-row'; row.innerHTML = `<input type="text" class="field-input" value="${escHtml(f)}" oninput="markDirty()"><button class="feature-remove" onclick="this.parentElement.remove();markDirty()">&#215;</button>`; wrap.appendChild(row); }); }
+function addFeature(pkg) { const wrap = document.getElementById(pkg+'-features'); const row = document.createElement('div'); row.className = 'feature-row'; row.innerHTML = `<input type="text" class="field-input" placeholder="New feature" oninput="markDirty()"><button class="feature-remove" onclick="this.parentElement.remove();markDirty()">&#215;</button>`; wrap.appendChild(row); markDirty(); }
+function getFeatures(pkg) { return Array.from(document.querySelectorAll('#'+pkg+'-features .feature-row input')).map(i=>i.value).filter(v=>v.trim()); }
+
+function renderWorkCards(cards) {
+  const list = document.getElementById('work-cards-list'); list.innerHTML = '';
+  cards.forEach((card, i) => { const div = document.createElement('div'); div.className = 'card-item'; div.innerHTML = `<div class="card-item-header"><span class="card-item-label">Project ${i+1}</span><button class="remove-btn" onclick="this.closest('.card-item').remove();markDirty()">Remove</button></div><div class="field-row"><div class="field-group"><label class="field-label">Card Tag</label><input type="text" class="field-input" value="${escHtml(card.tag||'')}" oninput="markDirty()"></div><div class="field-group"><label class="field-label">Type / Category</label><input type="text" class="field-input" value="${escHtml(card.type||'')}" oninput="markDirty()"></div></div><div class="field-group"><label class="field-label">Project Title</label><input type="text" class="field-input" value="${escHtml(card.title||'')}" oninput="markDirty()"></div><div class="field-group"><label class="field-label">Description</label><textarea class="field-textarea" oninput="markDirty()">${escHtml(card.desc||'')}</textarea></div><div class="field-row"><div class="field-group"><label class="field-label">Link Text</label><input type="text" class="field-input" value="${escHtml(card.linkText||'View Case Study →')}" oninput="markDirty()"></div><div class="field-group"><label class="field-label">Link URL</label><input type="text" class="field-input" value="${escHtml(card.linkHref||'#')}" oninput="markDirty()"></div></div>`; list.appendChild(div); });
+}
+function addWorkCard() { const list = document.getElementById('work-cards-list'); const i = list.children.length; const div = document.createElement('div'); div.className = 'card-item'; div.innerHTML = `<div class="card-item-header"><span class="card-item-label">Project ${i+1}</span><button class="remove-btn" onclick="this.closest('.card-item').remove();markDirty()">Remove</button></div><div class="field-row"><div class="field-group"><label class="field-label">Card Tag</label><input type="text" class="field-input" oninput="markDirty()" placeholder="Before / After"></div><div class="field-group"><label class="field-label">Type / Category</label><input type="text" class="field-input" oninput="markDirty()"></div></div><div class="field-group"><label class="field-label">Project Title</label><input type="text" class="field-input" oninput="markDirty()"></div><div class="field-group"><label class="field-label">Description</label><textarea class="field-textarea" oninput="markDirty()"></textarea></div><div class="field-row"><div class="field-group"><label class="field-label">Link Text</label><input type="text" class="field-input" value="View Case Study →" oninput="markDirty()"></div><div class="field-group"><label class="field-label">Link URL</label><input type="text" class="field-input" value="#" oninput="markDirty()"></div></div>`; list.appendChild(div); markDirty(); }
+
+function renderProcessSteps(steps) {
+  const list = document.getElementById('process-steps-list'); list.innerHTML = '';
+  steps.forEach((step, i) => { const div = document.createElement('div'); div.className = 'card-item'; div.innerHTML = `<div class="card-item-header"><span class="card-item-label">Step ${i+1}</span><button class="remove-btn" onclick="this.closest('.card-item').remove();markDirty()">Remove</button></div><div class="field-row"><div class="field-group"><label class="field-label">Step Number</label><input type="text" class="field-input" value="${escHtml(step.num)}" oninput="markDirty()"></div><div class="field-group"><label class="field-label">Step Name</label><input type="text" class="field-input" value="${escHtml(step.name)}" oninput="markDirty()"></div></div><div class="field-group"><label class="field-label">Description</label><textarea class="field-textarea" oninput="markDirty()">${escHtml(step.desc)}</textarea></div>`; list.appendChild(div); });
+}
+function addProcessStep() { const list = document.getElementById('process-steps-list'); const i = list.children.length+1; const div = document.createElement('div'); div.className = 'card-item'; div.innerHTML = `<div class="card-item-header"><span class="card-item-label">Step ${i}</span><button class="remove-btn" onclick="this.closest('.card-item').remove();markDirty()">Remove</button></div><div class="field-row"><div class="field-group"><label class="field-label">Step Number</label><input type="text" class="field-input" value="${i}" oninput="markDirty()"></div><div class="field-group"><label class="field-label">Step Name</label><input type="text" class="field-input" oninput="markDirty()"></div></div><div class="field-group"><label class="field-label">Description</label><textarea class="field-textarea" oninput="markDirty()"></textarea></div>`; list.appendChild(div); markDirty(); }
+
+function renderFooterLinks(links) { const list = document.getElementById('footer-links-list'); list.innerHTML = ''; links.forEach(lnk => { const div = document.createElement('div'); div.className = 'nav-item-row'; div.style.marginBottom = '8px'; div.innerHTML = `<input type="text" class="field-input" value="${escHtml(lnk.text)}" oninput="markDirty()" placeholder="Link text"><input type="text" class="field-input" value="${escHtml(lnk.href)}" oninput="markDirty()" placeholder="#section"><button class="remove-btn" onclick="this.parentElement.remove();markDirty()">&#215;</button>`; list.appendChild(div); }); }
+function addFooterLink() { const list = document.getElementById('footer-links-list'); const div = document.createElement('div'); div.className = 'nav-item-row'; div.style.marginBottom = '8px'; div.innerHTML = `<input type="text" class="field-input" oninput="markDirty()" placeholder="Link text"><input type="text" class="field-input" oninput="markDirty()" placeholder="#section"><button class="remove-btn" onclick="this.parentElement.remove();markDirty()">&#215;</button>`; list.appendChild(div); markDirty(); }
+
+function renderFormOptions(type, options) { const list = document.getElementById('form-'+type+'-options'); list.innerHTML = ''; options.forEach(opt => { const div = document.createElement('div'); div.className = 'nav-item-row'; div.style.marginBottom = '8px'; div.innerHTML = `<input type="text" class="field-input" value="${escHtml(opt.val)}" oninput="markDirty()" placeholder="value"><input type="text" class="field-input" value="${escHtml(opt.text)}" oninput="markDirty()" placeholder="Display text"><button class="remove-btn" onclick="this.parentElement.remove();markDirty()">&#215;</button>`; list.appendChild(div); }); }
+function addFormOption(type) { const list = document.getElementById('form-'+type+'-options'); const div = document.createElement('div'); div.className = 'nav-item-row'; div.style.marginBottom = '8px'; div.innerHTML = `<input type="text" class="field-input" oninput="markDirty()" placeholder="value"><input type="text" class="field-input" oninput="markDirty()" placeholder="Display text"><button class="remove-btn" onclick="this.parentElement.remove();markDirty()">&#215;</button>`; list.appendChild(div); markDirty(); }
+
+function syncColorToHex(key) { const col = document.getElementById('color-'+key); const hex = document.getElementById('color-'+key+'-hex'); if(col&&hex) hex.value = col.value; markDirty(); }
+function syncHexToColor(key) { const hex = document.getElementById('color-'+key+'-hex'); const col = document.getElementById('color-'+key); if(hex&&col&&/^#[0-9A-Fa-f]{6}$/.test(hex.value)) col.value = hex.value; markDirty(); }
+
+function collectAll() {
+  const getStripItems = () => Array.from(document.querySelectorAll('#strip-items .strip-item-row input')).map(i=>i.value).filter(v=>v.trim());
+  const getServiceTabs = () => Array.from(document.querySelectorAll('#service-tabs-editor .dropdown-section')).map(tab => {
+    const nameInput = tab.querySelector('input');
+    const cards = Array.from(tab.querySelectorAll('.service-cards-list .card-item')).map(card => {
+      const inputs = card.querySelectorAll('.field-row input');
+      const textarea = card.querySelector('textarea');
+      const bullets = Array.from(card.querySelectorAll('.features-wrap .feature-row input')).map(i=>i.value).filter(v=>v.trim());
+      return { num: inputs[0]?.value||'', name: inputs[1]?.value||'', desc: textarea?.value||'', bullets };
+    });
+    return { name: nameInput?.value||'', cards };
+  });
+  const getWorkCards = () => Array.from(document.querySelectorAll('#work-cards-list .card-item')).map(card => {
+    const inputs = card.querySelectorAll('input');
+    const textarea = card.querySelector('textarea');
+    return { tag: inputs[0]?.value||'', type: inputs[1]?.value||'', title: inputs[2]?.value||'', desc: textarea?.value||'', linkText: inputs[3]?.value||'View Case Study →', linkHref: inputs[4]?.value||'#' };
+  });
+  const getProcessSteps = () => Array.from(document.querySelectorAll('#process-steps-list .card-item')).map(step => {
+    const inputs = step.querySelectorAll('input');
+    const textarea = step.querySelector('textarea');
+    return { num: inputs[0]?.value||'', name: inputs[1]?.value||'', desc: textarea?.value||'' };
+  });
+  const getFormOptions = (type) => Array.from(document.querySelectorAll('#form-'+type+'-options .nav-item-row')).map(row => { const inputs = row.querySelectorAll('input'); return { val: inputs[0]?.value||'', text: inputs[1]?.value||'' }; }).filter(o=>o.val&&o.text);
+  const getFooterLinks = () => Array.from(document.querySelectorAll('#footer-links-list .nav-item-row')).map(row => { const inputs = row.querySelectorAll('input'); return { text: inputs[0]?.value||'', href: inputs[1]?.value||'#' }; }).filter(l=>l.text);
+  const gc = (id) => { const el = document.getElementById(id); return el ? el.checked : true; };
+
   return {
     content: {
-      notification: val('notification'),
-      hero: { headline: val('hero-headline'), subtitle: val('hero-subtitle'), description: val('hero-description'), location1: val('hero-location1'), location2: val('hero-location2') },
-      about: { text: val('about-text'), quote: val('about-quote') },
-      packages: {
-        starter: { price: val('starter-price'), features: currentData.content?.packages?.starter?.features || [] },
-        growth: { price: val('growth-price'), features: currentData.content?.packages?.growth?.features || [] },
-        full: { price: val('full-price'), features: currentData.content?.packages?.full?.features || [] }
+      seo: { title:g('seo-title'), description:g('seo-description'), ogTitle:g('og-title'), ogDescription:g('og-description'), ga:g('ga-id') },
+      notification: { before:g('notify-before'), highlight:g('notify-highlight'), ctaText:g('notify-cta-text'), ctaLink:g('notify-cta-link') },
+      nav: { logoPlain:g('nav-logo-plain'), logoItalic:g('nav-logo-italic'), ctaText:g('nav-cta-text'), ctaHref:g('nav-cta-href'), links:[1,2,3].map(i=>({text:g('navlink-'+i+'-text'),href:g('navlink-'+i+'-href')})).filter(l=>l.text) },
+      hero: { eyebrow:g('hero-eyebrow'), headline:g('hero-headline'), subtitle:g('hero-subtitle'), description:g('hero-description'), location1:g('hero-location1'), location2:g('hero-location2'), btnPrimary:g('hero-btn-primary'), btnPrimaryHref:g('hero-btn-primary-href'), btnSecondary:g('hero-btn-secondary'), btnSecondaryHref:g('hero-btn-secondary-href'), monogram:g('hero-monogram'), badgeLabel:g('hero-badge-label'), badgeValue:g('hero-badge-value') },
+      strip: { separator:g('strip-separator'), items:getStripItems() },
+      about: { tag:g('about-tag'), h1:g('about-h1'), h2:g('about-h2'), text:g('about-text'), quote:g('about-quote'), ctaText:g('about-cta-text'), ctaHref:g('about-cta-href'), stats:[1,2,3,4].map(i=>({num:g('stat'+i+'-num'),label:g('stat'+i+'-label')})) },
+      services: { tag:g('services-tag'), h1:g('services-h1'), h2:g('services-h2'), ctaText:g('services-cta-text'), ctaHref:g('services-cta-href'), tabs:getServiceTabs() },
+      packages: { tag:g('pkg-tag'), h1:g('pkg-h1'), h2:g('pkg-h2'), note:g('pkg-note'), customNote:g('pkg-custom-note'), customLinkText:g('pkg-custom-link-text'), customLinkHref:g('pkg-custom-link-href'),
+        starter: { name:g('pkg-starter-name'), price:g('pkg-starter-price'), per:g('pkg-starter-per'), btn:g('pkg-starter-btn'), btnHref:g('pkg-starter-btn-href'), features:getFeatures('starter') },
+        growth:  { name:g('pkg-growth-name'),  price:g('pkg-growth-price'),  per:g('pkg-growth-per'),  crown:g('pkg-growth-crown'), btn:g('pkg-growth-btn'), btnHref:g('pkg-growth-btn-href'), features:getFeatures('growth') },
+        full:    { name:g('pkg-full-name'),    price:g('pkg-full-price'),    per:g('pkg-full-per'),    btn:g('pkg-full-btn'),    btnHref:g('pkg-full-btn-href'),   features:getFeatures('full') }
       },
-      contact: { email: val('contact-email'), instagram: val('contact-instagram'), linkedin: val('contact-linkedin') }
+      work: { tag:g('work-tag'), h1:g('work-h1'), h2:g('work-h2'), ctaText:g('work-cta-text'), ctaHref:g('work-cta-href'), cards:getWorkCards() },
+      process: { tag:g('process-tag'), h1:g('process-h1'), h2:g('process-h2'), h3:g('process-h3'), steps:getProcessSteps() },
+      contact: { tag:g('contact-tag'), h1:g('contact-h1'), h2:g('contact-h2'), intro:g('contact-intro'), inquiriesLabel:g('contact-inquiries-label'), inquiriesEmail:g('contact-inquiries-email'), directLabel:g('contact-direct-label'), directEmail:g('contact-direct-email'), linkedinLabel:g('contact-linkedin-label'), linkedinName:g('contact-linkedin-name'), instagramLabel:g('contact-instagram-label'), instagramHandle:g('contact-instagram-handle') },
+      footer: { logoPlain:g('footer-logo-plain'), logoItalic:g('footer-logo-italic'), copyright:g('footer-copyright'), links:getFooterLinks() },
+      form: { formspree:g('form-formspree'), submitText:g('form-submit-text'), successMsg:g('form-success-msg'), errorMsg:g('form-error-msg'), labelName:g('form-label-name'), labelEmail:g('form-label-email'), labelBusiness:g('form-label-business'), labelMessage:g('form-label-message'), interestOptions:getFormOptions('interest'), serviceOptions:getFormOptions('service') },
+      visibility: { notification:gc('show-notification'), serviceNav:gc('show-serviceNav'), strip:gc('show-strip'), about:gc('show-about'), services:gc('show-services'), packages:gc('show-packages'), work:gc('show-work'), process:gc('show-process') }
     },
     settings: {
-      primaryColor: val('color-primary'),
-      secondaryColor: val('color-secondary'),
-      accentColor: val('color-accent'),
-      instagramUrl: val('social-instagram'),
-      linkedinUrl: val('social-linkedin'),
-      contactEmail: val('contact-email'),
-      calendlyLink: val('contact-calendly'),
-      ctaText: val('social-cta'),
-      notificationText: val('notification')
+      colors: { espresso:g('color-espresso')||'#1a0e06', ivory:g('color-ivory')||'#faf8f4', gold:g('color-gold')||'#b8965a', goldLight:g('color-gold-light')||'#d4b07a', stone:g('color-stone')||'#e8e2d8', linen:g('color-linen')||'#f0ebe3', warmGray:g('color-warm-gray')||'#8c7b6b', brown:g('color-brown')||'#3d2410' },
+      fonts: { heading:g('font-heading')||'Playfair Display', body:g('font-body')||'Tenor Sans' },
+      social: { instagram:g('social-instagram'), linkedin:g('social-linkedin'), beacons:g('social-beacons'), calendly:g('social-calendly') }
     }
   };
 }
-function val(id) { return document.getElementById(id)?.value || ''; }
-async function saveContent() {
-  const data = collectData();
-  const res = await fetch('/api', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }, body: JSON.stringify(data) });
-  if (res.ok) {
-    dirty = false;
-    document.getElementById('save-bar').classList.remove('visible');
-    document.getElementById('save-success').style.display = 'inline';
-    setTimeout(() => { document.getElementById('save-success').style.display = 'none'; }, 3000);
-  }
+
+async function saveAll() {
+  const data = collectAll();
+  try {
+    const res = await fetch('/api', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }, body: JSON.stringify(data) });
+    if (res.ok) {
+      dirty = false;
+      document.getElementById('save-bar').classList.remove('visible');
+      const msg = document.getElementById('save-success-msg');
+      msg.style.display = 'inline';
+      setTimeout(() => { msg.style.display = 'none'; }, 4000);
+    } else { alert('Save failed. Please try again.'); }
+  } catch(e) { alert('Connection error. Please try again.'); }
 }
-function markDirty() { dirty = true; document.getElementById('save-bar').classList.add('visible'); }
+
+async function changePassword() {
+  const np = document.getElementById('new-password').value;
+  const cp = document.getElementById('confirm-password').value;
+  const msg = document.getElementById('password-msg');
+  if (!np) { msg.textContent='Enter a new password.'; msg.className='password-msg err'; msg.style.display='block'; return; }
+  if (np !== cp) { msg.textContent='Passwords do not match.'; msg.className='password-msg err'; msg.style.display='block'; return; }
+  try {
+    const res = await fetch('/api', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }, body: JSON.stringify({ newPassword: np }) });
+    if (res.ok) {
+      token = np; sessionStorage.setItem('elb_admin_token', np);
+      msg.textContent = '✓ Password updated successfully.'; msg.className = 'password-msg ok'; msg.style.display = 'block';
+      document.getElementById('new-password').value = ''; document.getElementById('confirm-password').value = '';
+      setTimeout(() => { msg.style.display = 'none'; }, 4000);
+    }
+  } catch(e) { msg.textContent = 'Error updating password.'; msg.className = 'password-msg err'; msg.style.display = 'block'; }
+}
+
 function showPanel(name, btn) {
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('panel-' + name).classList.add('active');
+  document.getElementById('panel-'+name)?.classList.add('active');
   btn.classList.add('active');
 }
+
+function markDirty() { dirty = true; document.getElementById('save-bar').classList.add('visible'); }
 </script>
 </body>
 </html>

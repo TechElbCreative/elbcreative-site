@@ -528,6 +528,11 @@ if (token) initDashboard();
 
 async function login() {
   const pw = document.getElementById('password-input').value;
+  if (!pw) { document.getElementById('login-error').textContent = 'Please enter a password.'; document.getElementById('login-error').style.display = 'block'; return; }
+  const btn = document.querySelector('.login-btn');
+  btn.textContent = 'Signing in…';
+  btn.disabled = true;
+  document.getElementById('login-error').style.display = 'none';
   try {
     const res = await fetch('/api', { method: 'GET', headers: { 'Authorization': 'Bearer ' + pw } });
     if (res.ok) {
@@ -537,11 +542,16 @@ async function login() {
       showDashboard();
       populateAll();
     } else {
+      document.getElementById('login-error').textContent = 'Incorrect password. Please try again.';
       document.getElementById('login-error').style.display = 'block';
+      btn.textContent = 'Sign In';
+      btn.disabled = false;
     }
   } catch(e) {
-    document.getElementById('login-error').textContent = 'Connection error. Try again.';
+    document.getElementById('login-error').textContent = 'Connection error — could not reach /api. Check Cloudflare Functions are deployed.';
     document.getElementById('login-error').style.display = 'block';
+    btn.textContent = 'Sign In';
+    btn.disabled = false;
   }
 }
 
@@ -556,8 +566,16 @@ async function initDashboard() {
   try {
     const res = await fetch('/api', { headers: { 'Authorization': 'Bearer ' + token } });
     if (res.ok) { D = await res.json(); showDashboard(); populateAll(); }
-    else { sessionStorage.removeItem('elb_admin_token'); token = null; }
-  } catch(e) { sessionStorage.removeItem('elb_admin_token'); token = null; }
+    else {
+      sessionStorage.removeItem('elb_admin_token'); token = null;
+      document.getElementById('login-wrap').style.display = 'flex';
+    }
+  } catch(e) {
+    sessionStorage.removeItem('elb_admin_token'); token = null;
+    document.getElementById('login-wrap').style.display = 'flex';
+    document.getElementById('login-error').textContent = 'Could not connect to server. Try again.';
+    document.getElementById('login-error').style.display = 'block';
+  }
 }
 
 function showDashboard() {
